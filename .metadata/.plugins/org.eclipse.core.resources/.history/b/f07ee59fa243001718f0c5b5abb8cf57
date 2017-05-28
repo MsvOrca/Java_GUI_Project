@@ -9,12 +9,12 @@ interface addMenuOpt{//메뉴 전체를 형성하는 인터페이스
 public class MakeMenu extends JFrame implements addMenuOpt{
 
 	@Override
-	public void addMenuBar(JMenu Menu, JMenuBar MenuBar) {//function inserting menu in menubar
+	public void addMenuBar(JMenu Menu, JMenuBar MenuBar) {//메뉴바에 메뉴를 넣어주는 함수
 		MenuBar.add(Menu);
 	}
 
 	@Override
-	public void addMenu(JMenu Menu) {//insert Menu buttons in menu
+	public void addMenu(JMenu Menu) {//메뉴 버튼을 메뉴에 삽입
 		JMenuItem MNew = new JMenuItem("NEW");
 		JMenuItem MOpen = new JMenuItem("OPEN");
 		JMenuItem MSave = new JMenuItem("SAVE");
@@ -32,7 +32,7 @@ public class MakeMenu extends JFrame implements addMenuOpt{
 
 	@Override
 	public void CreateMenu(JMenu Menu, JMenuBar MenuBar) {
-		// creating menu directly
+		// 메뉴를 직접적으로 생성하는 함수
 		addMenu(Menu);
 		addMenuBar(Menu, MenuBar);
 	}

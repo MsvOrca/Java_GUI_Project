@@ -1,0 +1,18 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class CreateFrame extends JFrame{
+	JMenuBar MenuBar = new JMenuBar();
+	CreateFrame(){
+		MakeMenu MakingMenu = new MakeMenu();
+		setTitle("Java Panel");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(1000,900);
+		
+		//메뉴 생성
+		MakingMenu.CreateMenu(new JMenu("FILE"), MenuBar);
+		setJMenuBar(MenuBar);
+		
+		setVisible(true);
+	}
+}

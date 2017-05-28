@@ -1,0 +1,12 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class CreateFrame extends JFrame{
+	CreateFrame(){
+		setTitle("Java Panel");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(700,900);
+		
+		setVisible(true);
+	}
+}

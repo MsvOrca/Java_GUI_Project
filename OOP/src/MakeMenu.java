@@ -1,0 +1,40 @@
+import java.awt.*;
+import javax.swing.*;
+
+interface addMenuOpt{//메뉴 전체를 형성하는 인터페이스
+	void addMenuBar(JMenu Menu, JMenuBar MenuBar);
+	void addMenu(JMenu Menu);
+	void CreateMenu(JMenu Menu, JMenuBar MenuBar);
+}
+public class MakeMenu extends JFrame implements addMenuOpt{
+
+	@Override
+	public void addMenuBar(JMenu Menu, JMenuBar MenuBar) {//메뉴바에 메뉴를 넣어주는 함수
+		MenuBar.add(Menu);
+	}
+
+	@Override
+	public void addMenu(JMenu Menu) {//메뉴 버튼을 메뉴에 삽입
+		JMenuItem MNew = new JMenuItem("NEW");
+		JMenuItem MOpen = new JMenuItem("OPEN");
+		JMenuItem MSave = new JMenuItem("SAVE");
+		JMenuItem MSaveAs = new JMenuItem("SAVE AS");
+		JMenuItem MJava = new JMenuItem("NEW JAVA");
+		JMenuItem MExit = new JMenuItem("EXIT");
+
+		Menu.add(MNew);
+		Menu.add(MOpen);
+		Menu.add(MSave);
+		Menu.add(MSaveAs);
+		Menu.add(MJava);
+		Menu.add(MExit);
+	}
+
+	@Override
+	public void CreateMenu(JMenu Menu, JMenuBar MenuBar) {
+		// 메뉴를 직접적으로 생성하는 함수
+		addMenu(Menu);
+		addMenuBar(Menu, MenuBar);
+	}
+
+}

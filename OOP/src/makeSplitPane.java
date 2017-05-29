@@ -5,18 +5,20 @@ class makeSplitPane
 {
 	public static final int DIVIDER_SIZE = 5;
 	
-	static void addSplitPane(JFrame jf,JSplitPane jsPane)
+	static void addSplitPane(JFrame jf, JSplitPane jsPane, JToolBar tb, MakeTool MT)
 	{
 		setSplitPane(jsPane);
 		addScrollToRSplit(jsPane);
 		
+		MT.CreateTool(tb, jf);
 		jf.add(jsPane,"Center");
+		
 	}
 	
 	private static void setSplitPane(JSplitPane jsPane)
 	{
 		jsPane.setContinuousLayout(true);
-		jsPane.setDividerLocation(CreateFrame.FWIDTH/3);
+		jsPane.setDividerLocation(CreateFrame.WIDTH/3);
 		jsPane.setDividerSize(DIVIDER_SIZE);
 	}
 	

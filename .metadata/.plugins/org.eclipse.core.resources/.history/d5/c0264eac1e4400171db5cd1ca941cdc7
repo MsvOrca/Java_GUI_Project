@@ -4,25 +4,32 @@ import javax.swing.*;
 public class CreateFrame extends JFrame{
 	JMenuBar MenuBar = new JMenuBar();
 	JSplitPane sPane = new JSplitPane();
-	JToolBar tBar = new JToolBar();
+	JToolBar ToolBar = new JToolBar();
 	CreateFrame(){
+		
 		setTitle("Java Panel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1000,900);
+		
+		//Create ContentPane
+		Container Contain = getContentPane();
+		//Complete Creating ContentPane
 		
 		//Create Menu
 		MakeMenu MakingMenu = new MakeMenu();
 		MakingMenu.CreateMenu(new JMenu("FILE"), MenuBar);
 		setJMenuBar(MenuBar);
 		//Complete Creating Menu
-
-		//Create SplitPane{
-		//Create MakeToolBar{
+		
+		//Create SplitPane
+		makeSplitPane.addSplitPane(Contain,sPane);
+		//Complete Creating SplitPane
+		
+		//Create ToolBar
 		MakeTool MakingTool = new MakeTool();
-		//}Complete Creating ToolBar
-		makeSplitPane.addSplitPane(this, sPane, tBar, MakingTool);
-		//Complete Creating SplitPane}
-
+		ToolBar.setFloatable(false);
+		MakingTool.CreateTool(ToolBar, this);
+		//Complete ToolBar
 		setVisible(true);
 	}
 }

@@ -27,7 +27,6 @@ public class MakeTool extends JFrame implements AddToolOpt{
 	@Override
 	public void CreateTool(JToolBar ToolBar, JFrame Frame) {
 		// TODO Auto-generated method stub
-		AddToolBar(ToolBar);
 		ToolBar.setFloatable(false);
 		Frame.add(ToolBar, BorderLayout.NORTH);
 	}

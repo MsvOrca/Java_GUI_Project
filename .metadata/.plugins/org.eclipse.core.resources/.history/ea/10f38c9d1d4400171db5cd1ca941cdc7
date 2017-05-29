@@ -3,7 +3,7 @@ import javax.swing.*;
 
 interface AddToolOpt{
 	void AddToolBar(JToolBar ToolBar);
-	void CreateTool(JToolBar ToolBar, JFrame Frame);
+	void CreateTool(JToolBar ToolBar);
 }
 public class MakeTool extends JFrame implements AddToolOpt{
 
@@ -25,11 +25,9 @@ public class MakeTool extends JFrame implements AddToolOpt{
 	}
 
 	@Override
-	public void CreateTool(JToolBar ToolBar, JFrame Frame) {
+	public void CreateTool(JToolBar ToolBar) {
 		// TODO Auto-generated method stub
-		AddToolBar(ToolBar);
-		ToolBar.setFloatable(false);
-		Frame.add(ToolBar, BorderLayout.NORTH);
+		this.AddToolBar(ToolBar);
 	}
 	
 }

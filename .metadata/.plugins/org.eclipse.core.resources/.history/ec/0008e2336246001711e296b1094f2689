@@ -1,18 +1,18 @@
 import java.awt.*;
 import javax.swing.*;
 
-interface addMenuOpt{//Interface forms entire menu
+interface addMenuOpt{//메뉴 전체를 형성하는 인터페이스
 	void addMenuBar(JMenu Menu, JMenuBar MenuBar);
 	void addMenu(JMenu Menu);
 	void CreateMenu(JMenu Menu, JMenuBar MenuBar);
 }
 public class MakeMenu extends JFrame implements addMenuOpt{
-	
+
 	@Override
 	public void addMenuBar(JMenu Menu, JMenuBar MenuBar) {//function inserting menu in menubar
 		MenuBar.add(Menu);
 	}
-	
+
 	@Override
 	public void addMenu(JMenu Menu) {//insert Menu buttons in menu
 		JMenuItem MNew = new JMenuItem("NEW");
@@ -36,4 +36,5 @@ public class MakeMenu extends JFrame implements addMenuOpt{
 		addMenu(Menu);
 		addMenuBar(Menu, MenuBar);
 	}
+
 }

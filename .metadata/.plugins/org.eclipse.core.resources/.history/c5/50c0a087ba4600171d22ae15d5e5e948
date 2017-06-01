@@ -25,12 +25,15 @@ public class CreateFrame extends JFrame{
 		//Create MakeToolBar{
 		MakeTool MakingTool = new MakeTool();
 		//}Complete Creating ToolBar
-
-        MakeContentPane.setContentPane(this,sPane,tBar,MakingTool);
-        //makeSplitPane.addSplitPane(this, sPane, tBar, MakingTool);
-        //Complete Creating SplitPane}
-
-
+<<<<<<< HEAD
+		
+		makeSplitPane.addSplitPane(this, sPane, tBar, MakingTool);
+		//}Complete Creating SplitPane
+=======
+		MakeContentPane.setContentPane(this,sPane,tBar,MakingTool);
+		//makeSplitPane.addSplitPane(this, sPane, tBar, MakingTool);
+		//Complete Creating SplitPane}
+>>>>>>> d1cc277a4a4e8113034ef8cd0d79f7262b7f4e9b
 
 		setVisible(true);
 	}

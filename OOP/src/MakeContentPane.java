@@ -7,7 +7,7 @@ public class MakeContentPane {
 	static final String[] str = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
 	static final JList list = new JList(str);
 	static final String[] strb = {"button","panel","rectangle","circle","sqare","arrow"};
-	static final Object[][] rowData = {{"Attribute","Value"},{"Type",1},{"Color",2},{"Height",3}
+	static final Object[][] rowData = {{"Attribute","Value"},{"Type",1},{"Height",3}
 						 ,{"Width",4},{"PosX",5},{"PosY",6},{"TextField",7},{"Variable",8}};
 	static final String[] columnData = {"Attribute","Value"};
 	
@@ -48,7 +48,6 @@ public class MakeContentPane {
 		JPanel bot = new JPanel();
 		JSplitPane leftSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);	
 		
-
 		leftSplit.setDividerLocation((int)frame.getSize().getHeight()/3*2);
 		setSplitPane(leftSplit);
 		

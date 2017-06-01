@@ -26,10 +26,8 @@ public class CreateFrame extends JFrame{
 		MakeTool MakingTool = new MakeTool();
 		//}Complete Creating ToolBar
 
-        MakeContentPane.setContentPane(this,sPane,tBar,MakingTool);
-        //makeSplitPane.addSplitPane(this, sPane, tBar, MakingTool);
-        //Complete Creating SplitPane}
-
+		MakeSplitPane.addSplitPane(this, sPane, tBar, MakingTool);
+		//}Complete Creating SplitPane
 
 
 		setVisible(true);

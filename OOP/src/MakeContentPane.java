@@ -1,0 +1,100 @@
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+public class MakeContentPane {
+
+	static final String[] str = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+	static final JList list = new JList(str);
+	static final String[] strb = {"button","panel","rectangle","circle","sqare","arrow"};
+	static final Object[][] rowData = {{"Attribute","Value"},{"Type",1},{"Color",2},{"Height",3}
+						 ,{"Width",4},{"PosX",5},{"PosY",6},{"TextField",7},{"Variable",8}};
+	static final String[] columnData = {"Attribute","Value"};
+	
+	
+	public static void setContentPane(JFrame frame, JSplitPane split, JToolBar tb, MakeTool MT)
+	{
+
+		split.setDividerLocation((int)frame.getSize().getWidth()/3);
+		setSplitPane(split);
+		
+		MT.CreateTool(tb, frame);
+		
+		setLeftSplit(frame,split);
+		setRightSplit(split);
+		
+		frame.add(split);
+	}
+	
+	public static void setSplitPane(JSplitPane split)
+	{
+		split.setDividerSize(5);
+		split.setContinuousLayout(true);
+	}
+	
+	public static JButton[] makeButtonArr(String[] strb)
+	{
+		JButton[] but = new JButton[6];
+		
+		for(int i=0;i<strb.length;i++)
+			but[i] = new JButton(strb[i]);
+		
+		return but;
+	}
+	
+	public static void setLeftSplit(JFrame frame,JSplitPane split)
+	{
+		JPanel top = new JPanel();
+		JPanel bot = new JPanel();
+		JSplitPane leftSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);	
+		
+
+		leftSplit.setDividerLocation((int)frame.getSize().getHeight()/3*2);
+		setSplitPane(leftSplit);
+		
+		setTopSplit(leftSplit, top);
+		setBotSplit(leftSplit);
+		
+		split.setLeftComponent(leftSplit);
+	}
+	
+	public static void setTopSplit(JSplitPane split, JPanel top)
+	{
+		
+		JButton[] add = makeButtonArr(strb);
+		
+		top.setLayout(new GridLayout(3,2));
+		
+		for(int i=0;i<add.length;i++)
+			top.add(add[i]);
+		split.setTopComponent(top);
+	}
+	
+	public static void setBotSplit(JSplitPane split)
+	{
+		split.setBottomComponent(makeTable());
+	}
+	
+	public static void setRightSplit(JSplitPane split)
+	{
+		addScroll(split,list);
+	}
+	
+	public static JTable makeTable()
+	{
+		DefaultTableModel defaultTableModel = new DefaultTableModel(rowData,columnData);
+		JTable table = new JTable(defaultTableModel);
+		
+		return table;
+	}
+	
+	public static void addScroll(JSplitPane split,Container add)
+	{
+		JScrollPane scroll = new JScrollPane(add);
+		
+		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		split.add(scroll);
+		}
+}

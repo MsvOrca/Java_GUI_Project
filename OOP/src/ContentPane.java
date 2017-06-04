@@ -1,12 +1,10 @@
-import java.awt.*;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-
-
+import java.util.*;
 
 
 public class ContentPane extends JSplitPane 
 {
+
 	ContentPane(JFrame frame, JToolBar tb, MakeTool MT)
 	{
 		super(JSplitPane.HORIZONTAL_SPLIT);
@@ -16,6 +14,8 @@ public class ContentPane extends JSplitPane
 		
 		setContentPane(frame,editor,attribute);
 	
+		frame.add(this);
+		
 		MT.CreateTool(tb, frame);		
 	}
 	

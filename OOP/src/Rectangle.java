@@ -1,0 +1,16 @@
+
+public class Rectangle extends DrawnObject
+{
+	static String type = "Rectangle";
+	
+	public Rectangle()
+	{
+		super(type);
+	}
+	
+	public Rectangle(String variable, int x, int y, int width, int height, String text)
+	{
+		super(type,variable,x,y,width,height,text);
+	}
+}
+

@@ -8,6 +8,7 @@ public class CreateFrame extends JFrame{
 	JMenuBar MenuBar = new JMenuBar();
 	JSplitPane sPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	JToolBar tBar = new JToolBar();
+	Container contentPane;
 	
 	CreateFrame(){
 		setTitle("Java Panel");
@@ -25,8 +26,8 @@ public class CreateFrame extends JFrame{
 		//Create MakeToolBar{
 		MakeTool MakingTool = new MakeTool();
 		//}Complete Creating ToolBar
-
-        MakeContentPane.setContentPane(this,sPane,tBar,MakingTool);
+		contentPane = new ContentPane(this,tBar,MakingTool);
+        //MakeContentPane.setContentPane(this,sPane,tBar,MakingTool);
         //makeSplitPane.addSplitPane(this, sPane, tBar, MakingTool);
         //Complete Creating SplitPane}
 

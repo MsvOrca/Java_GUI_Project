@@ -2,23 +2,32 @@ import java.awt.*;
 import javax.swing.*;
 
 public class CreateFrame extends JFrame{
+	public static final int FWIDTH = 1000;
+	public static final int FHEIGHT = 730;
+	
 	JMenuBar MenuBar = new JMenuBar();
-	JSplitPane sPane = new JSplitPane();
+	JSplitPane sPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JToolBar tBar = new JToolBar();
+	Container contentPane;
+	
 	CreateFrame(){
 		setTitle("Java Panel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(1000,900);
+		setSize(FWIDTH,FHEIGHT);
 		
 		//Create Menu
 		MakeMenu MakingMenu = new MakeMenu();
 		MakingMenu.CreateMenu(new JMenu("FILE"), MenuBar);
 		setJMenuBar(MenuBar);
 		//Complete Creating Menu
-		
-		//Create SplitPane
-		makeSplitPane.addSplitPane(this,sPane);
-		//Complete Creating SplitPane
-		
+
+		//Create SplitPane{
+		//Create MakeToolBar{
+		MakeTool MakingTool = new MakeTool();
+		//}Complete Creating ToolBar
+		contentPane = new ContentPane(this,tBar,MakingTool);
+        //Complete Creating SplitPane}
+
 		setVisible(true);
 	}
 }

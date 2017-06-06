@@ -66,6 +66,7 @@ public class DrawnObject
 		this.variable = variable;
 	}
 	
+	
 	public void setText(String text)
 	{
 		this.text = text;

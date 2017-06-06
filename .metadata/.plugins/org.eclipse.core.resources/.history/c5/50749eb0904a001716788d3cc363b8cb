@@ -21,7 +21,7 @@ public class DrawingObject extends JPanel{
 		{
 			DOP = ButtonPane.drawnVector.get(a);
 			
-			g.fillOval(DOP.x, DOP.y, DOP.width, DOP.height);
+			g.fillRect(DOP.x, DOP.y, DOP.width, DOP.height);
 			
 			System.out.println(a + ". " +DOP.width + ", " + DOP.height);
 			

@@ -16,14 +16,14 @@ public class DrawingObject extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.BLUE);
-		DrawnObject DOP;		
-		for(int a = 0; a < ButtonPane.drawnVector.size(); a++)
+		DrawnObject DOP, DOP2;		
+		for(int a = 1; a < ButtonPane.drawnVector.size(); a++)
 		{
 			DOP = ButtonPane.drawnVector.get(a);
+			DOP2 = ButtonPane.drawnVector.get(a - 1);
 			
 			g.fillRect(DOP.x, DOP.y, DOP.width, DOP.height);
-			
-			System.out.println(a + ". " +DOP.width + ", " + DOP.height);
+			System.out.println(a + ". " +DOP.width + ", " + DOP2.width);
 			
 			DOP = null;
 		}

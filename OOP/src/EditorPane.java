@@ -31,8 +31,10 @@ class EditorPane extends JScrollPane
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
+			//DOP = ButtonPane.drawnVector.get(ButtonPane.drawnVector.size());
 			DOP.x = e.getX();
 			DOP.y = e.getY();
+
 			
 		//	System.out.println("@@@@" + ButtonPane.drawnVector.get(ButtonPane.Vnum).x);
 		}
@@ -42,16 +44,16 @@ class EditorPane extends JScrollPane
 			// TODO Auto-generated method stub
 			DOP.width = - DOP.x + e.getX();
 			DOP.height = - DOP.y + e.getY();
+			if(ButtonPane.drawnVector.size() < 5)
+			{
+			//ButtonPane.drawnVector.remove(ButtonPane.drawnVector.size() - 1);		
 			
-			System.out.println(DOP.width + "!!!!" + DOP.height);
+			//ButtonPane.drawnVector.add(DOP);
+			}
+			DOP = ButtonPane.drawnVector.get(0);
 			
-			ButtonPane.drawnVector.remove(ButtonPane.drawnVector.size() - 1);
+			System.out.println("XXXXX  " + DOP.width);
 			
-			ButtonPane.drawnVector.add(ButtonPane.drawnVector.size(), DOP);
-			
-			//DOP = ButtonPane.drawnVector.get(ButtonPane.Vnum);
-			
-			//System.out.println(DOP.width + "!!!!" + DOP.height);
 			repaint();
 		}
 

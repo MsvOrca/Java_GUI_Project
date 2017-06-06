@@ -16,10 +16,10 @@ public class DrawingObject extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.BLUE);
-		DrawnObject DOP;		
+		//DrawnObject DOP;		
 		for(int a = 0; a < ButtonPane.drawnVector.size(); a++)
 		{
-			DOP = ButtonPane.drawnVector.get(a);
+			DrawnObject DOP = ButtonPane.drawnVector.get(a);
 			
 			g.fillRect(DOP.x, DOP.y, DOP.width, DOP.height);
 			

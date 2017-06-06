@@ -20,8 +20,9 @@ class EditorPane extends JScrollPane
 		this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 	}
+	
 	class ButtonMouseListener implements MouseListener{
-		DrawnObject DOP = new DrawnObject();
+		DrawnObject DOP ;
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
@@ -31,6 +32,7 @@ class EditorPane extends JScrollPane
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
+			DOP = ButtonPane.drawnVector.lastElement();
 			//DOP = ButtonPane.drawnVector.get(ButtonPane.drawnVector.size());
 			DOP.x = e.getX();
 			DOP.y = e.getY();
@@ -50,9 +52,14 @@ class EditorPane extends JScrollPane
 			
 			//ButtonPane.drawnVector.add(DOP);
 			}
-			DOP = ButtonPane.drawnVector.get(0);
+			//ButtonPane.drawnVector.add(DOP);
+			//DOP = ButtonPane.drawnVector.get(0);
 			
-			System.out.println("XXXXX  " + DOP.width);
+			for(int i=0;i<ButtonPane.drawnVector.size();i++)
+			{
+				System.out.println("size:"+ButtonPane.drawnVector.size());
+				System.out.println(i+":"+ButtonPane.drawnVector.get(i));
+			}	
 			
 			repaint();
 		}

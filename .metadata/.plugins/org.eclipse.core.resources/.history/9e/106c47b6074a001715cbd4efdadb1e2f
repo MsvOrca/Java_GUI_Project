@@ -1,0 +1,19 @@
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+
+class EditorPane extends JScrollPane
+{
+	static DrawingObject DO = new DrawingObject();
+	
+	EditorPane()
+	{
+		super(DO);
+		setScroll();
+	}
+	
+	public void setScroll()
+	{
+		this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	}
+}

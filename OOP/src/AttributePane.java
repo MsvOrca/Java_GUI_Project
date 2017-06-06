@@ -2,6 +2,8 @@ import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
@@ -44,7 +46,8 @@ public class AttributePane extends JSplitPane
 class ButtonPane extends JPanel 
 {
 	static final String[] strb = {"button","roundrectangle","rectangle","circle"};
-	public Vector<DrawnObject> drawnVector = new Vector<DrawnObject>();
+	public static Vector<DrawnObject> drawnVector = new Vector<DrawnObject>();
+	static int Make = 0;
 	JButton[] buttons = new JButton[4];
 	
 	ButtonPane()
@@ -65,6 +68,7 @@ class ButtonPane extends JPanel
 	
 	class ButtonActionListener implements ActionListener
 	{
+		
 		public void actionPerformed(ActionEvent action)
 		{
 			JButton button = (JButton)action.getSource();
@@ -72,7 +76,8 @@ class ButtonPane extends JPanel
 			
 			if(strb[0].equals(text))
 			{
-				drawnVector.addElement(new Button());
+			    drawnVector.addElement(new Button());
+				System.out.println(ButtonPane.drawnVector.size());
 			}
 			else if(strb[1].equals(text))
 			{
@@ -88,6 +93,7 @@ class ButtonPane extends JPanel
 			}
 		}
 	}
+	
 }
 
 class TablePane extends JTable

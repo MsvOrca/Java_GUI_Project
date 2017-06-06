@@ -1,5 +1,6 @@
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JList;
 import javax.swing.JScrollPane;
@@ -14,6 +15,7 @@ class EditorPane extends JScrollPane
 		super(DO);
 		setScroll();
 		this.addMouseListener(new ButtonMouseListener());
+		this.addMouseMotionListener(new ButtonMouseMotionListener());
 	}
 
 	public void setScroll()
@@ -28,7 +30,7 @@ class EditorPane extends JScrollPane
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			ClickComponent(e.getX(), e.getY());
-			
+
 			repaint();
 		}
 
@@ -40,7 +42,7 @@ class EditorPane extends JScrollPane
 				DOP = ButtonPane.drawnVector.lastElement();
 				DOP.x = e.getX();
 				DOP.y = e.getY();	
-				System.out.println("P");
+				//System.out.println("P");
 			}
 		}
 
@@ -50,15 +52,16 @@ class EditorPane extends JScrollPane
 
 			if(EditorPane.Made)
 			{
-				System.out.println("R");
+				//System.out.println("R");
 				DOP.width = - DOP.x + e.getX();
 				DOP.height = - DOP.y + e.getY();
 				DOP.Clicked = false;
 
 				repaint();
-				
+
 				EditorPane.Made = false;
 			}
+
 		}
 
 		@Override
@@ -71,6 +74,7 @@ class EditorPane extends JScrollPane
 			// TODO Auto-generated method stub
 
 		}
+
 		public void ClickComponent(int x, int y)
 		{
 			for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
@@ -90,5 +94,37 @@ class EditorPane extends JScrollPane
 				else  DOP.Clicked = false;
 			}
 		}
+	}
+	class ButtonMouseMotionListener implements MouseMotionListener
+	{
+		DrawnObject DOP;
+		@Override
+		public void mouseDragged(MouseEvent e) {
+			// TODO Auto-generated method stub
+			if(!EditorPane.Made)
+			{
+				for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
+				{
+					DOP = ButtonPane.drawnVector.get(a);
+					if(DOP.Clicked)
+						ChangeSize(e.getX(), e.getY(), DOP);
+						break;
+				}
+				//ChangeSize(e.getX(), e.getY(), DOP);
+				repaint();
+			}
+		}
+		public void ChangeSize(int x, int y, DrawnObject DOP)
+		{
+			DOP.width = x - DOP.x;
+			DOP.height = y - DOP.y;
+		}
+
+		@Override
+		public void mouseMoved(MouseEvent e) {
+			// TODO Auto-generated method stub
+
+		}
+
 	}
 }

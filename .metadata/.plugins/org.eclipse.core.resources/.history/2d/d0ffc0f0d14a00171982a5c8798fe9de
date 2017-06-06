@@ -1,0 +1,86 @@
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+
+class EditorPane extends JScrollPane
+{
+	static DrawingObject DO = new DrawingObject();
+
+	EditorPane()
+	{
+		super(DO);
+		setScroll();
+		this.addMouseListener(new ButtonMouseListener());
+	}
+
+	public void setScroll()
+	{
+		this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	}
+
+	class ButtonMouseListener implements MouseListener{
+		DrawnObject DOP ;
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			System.out.println("C");
+			int x = e.getX();
+			int y = e.getY();
+			System.out.println("x " + x + "y " + y);
+			for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
+			{
+				DOP = ButtonPane.drawnVector.get(a);
+				System.out.println(a);
+
+				if((DOP.x < x) && (x < DOP.x + DOP.width))
+				{		
+					if((DOP.y < y) && (y < DOP.y + DOP.height))
+					{
+						DOP.Clicked = true;
+					}
+					else
+						DOP.Clicked = false;
+				}
+				else  DOP.Clicked = false;
+			}
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			DOP = ButtonPane.drawnVector.lastElement();
+			DOP.x = e.getX();
+			DOP.y = e.getY();
+		
+			System.out.println("P");
+
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+
+			System.out.println("R");
+			DOP.width = - DOP.x + e.getX();
+			DOP.height = - DOP.y + e.getY();
+			DOP.Clicked = false;
+			
+			repaint();
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+
+		}
+
+	}
+}

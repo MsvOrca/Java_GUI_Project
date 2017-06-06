@@ -7,6 +7,7 @@ public class DrawnObject
 	int y;
 	int width;
 	int height;
+	Boolean Clicked;
 	String text;
 	
 	public DrawnObject()

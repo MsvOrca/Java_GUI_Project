@@ -7,7 +7,8 @@ import javax.swing.JScrollPane;
 class EditorPane extends JScrollPane
 {
 	static DrawingObject DO = new DrawingObject();
-
+	static Boolean Made = false;
+	
 	EditorPane()
 	{
 		super(DO);
@@ -20,47 +21,49 @@ class EditorPane extends JScrollPane
 		this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 	}
+
 	class ButtonMouseListener implements MouseListener{
-		DrawnObject DOP = new DrawnObject();
+		DrawnObject DOP ;
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-
+			ClickComponent(e.getX(), e.getY());
+			
+			repaint();
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
-			//DOP = ButtonPane.drawnVector.get(ButtonPane.drawnVector.size());
-			DOP.x = e.getX();
-			DOP.y = e.getY();
-			
-			//System.out.println("@@@@" + ButtonPane.drawnVector.get(ButtonPane.Vnum).x);
+			if(EditorPane.Made)
+			{
+				DOP = ButtonPane.drawnVector.lastElement();
+				DOP.x = e.getX();
+				DOP.y = e.getY();	
+				System.out.println("P");
+			}
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
-			//DOP = ButtonPane.drawnVector.get(0);
 
-			System.out.println("FFFFF  " + DOP.width);
-			DOP.width = - DOP.x + e.getX();
-			DOP.height = - DOP.y + e.getY();
+			if(EditorPane.Made)
+			{
+				System.out.println("R");
+				DOP.width = - DOP.x + e.getX();
+				DOP.height = - DOP.y + e.getY();
+				DOP.Clicked = false;
 
-			//ButtonPane.drawnVector.remove(ButtonPane.drawnVector.size() - 1);		
-
-			//ButtonPane.drawnVector.add(DOP);
-			//DOP = ButtonPane.drawnVector.get(0);
-
-			System.out.println("XXXXX  " + DOP.width);
-
-			repaint();
+				repaint();
+				
+				EditorPane.Made = false;
+			}
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-
 		}
 
 		@Override
@@ -68,6 +71,24 @@ class EditorPane extends JScrollPane
 			// TODO Auto-generated method stub
 
 		}
+		public void ClickComponent(int x, int y)
+		{
+			for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
+			{
+				DOP = ButtonPane.drawnVector.get(a);
+				System.out.println(a);
 
+				if((DOP.x < x) && (x < DOP.x + DOP.width))
+				{		
+					if((DOP.y < y) && (y < DOP.y + DOP.height))
+					{
+						DOP.Clicked = true;
+					}
+					else
+						DOP.Clicked = false;
+				}
+				else  DOP.Clicked = false;
+			}
+		}
 	}
 }

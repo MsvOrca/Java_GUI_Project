@@ -83,7 +83,6 @@ class ButtonPane extends JPanel
 				TablePane.selectedObject = drawnVector.lastElement();
 				TablePane.setTablePane();
 				
-				
 			}
 			else if(strb[1].equals(text))
 			{

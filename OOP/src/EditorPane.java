@@ -98,6 +98,11 @@ class EditorPane extends JScrollPane
 			for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
 			{
 				DOP = ButtonPane.drawnVector.get(a);
+				DOP.Clicked = false;
+			}
+			for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
+			{
+				DOP = ButtonPane.drawnVector.get(a);
 
 				if((DOP.x < x) && (x < DOP.x + DOP.width))
 				{		
@@ -153,13 +158,25 @@ class EditorPane extends JScrollPane
 		}
 		public void MoveObject(int PW, int PH, int x, int y, DrawnObject DOP)
 		{	
-				DOP.x += PW - 30;		
-				DOP.y += PH - 30;
+			DOP.x += PW - 30;		
+			DOP.y += PH - 30;
 		}
 		public void ChangeSize(int x, int y, DrawnObject DOP)
 		{
-			DOP.width = x - DOP.x;
-			DOP.height = y - DOP.y;
+			if(DOP.x > x)
+			{
+				DOP.width = DOP.x - x;
+				DOP.x = x;
+			}
+			else
+				DOP.width = x - DOP.x;
+			if(DOP.y > y)
+			{
+				DOP.height = DOP.y - y;
+				DOP.y = y;
+			}
+			else
+				DOP.height = y - DOP.y;
 		}
 
 		@Override

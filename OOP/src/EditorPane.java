@@ -15,7 +15,7 @@ class EditorPane extends JScrollPane
 		super(DO);
 		setScroll();
 		this.addMouseListener(new ButtonMouseListener());
-		this.addMouseMotionListener(new ButtonMouseMotionListener());
+		this.addMouseMotionListener(new ButtonMouseListener());
 	}
 
 	public void setScroll()
@@ -24,7 +24,7 @@ class EditorPane extends JScrollPane
 		this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 	}
 
-	class ButtonMouseListener implements MouseListener{
+	class ButtonMouseListener implements MouseListener, MouseMotionListener{
 		DrawnObject DOP ;
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -80,7 +80,6 @@ class EditorPane extends JScrollPane
 			for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
 			{
 				DOP = ButtonPane.drawnVector.get(a);
-				System.out.println(a);
 
 				if((DOP.x < x) && (x < DOP.x + DOP.width))
 				{		
@@ -94,10 +93,7 @@ class EditorPane extends JScrollPane
 				else  DOP.Clicked = false;
 			}
 		}
-	}
-	class ButtonMouseMotionListener implements MouseMotionListener
-	{
-		DrawnObject DOP;
+		
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			// TODO Auto-generated method stub
@@ -107,10 +103,15 @@ class EditorPane extends JScrollPane
 				{
 					DOP = ButtonPane.drawnVector.get(a);
 					if(DOP.Clicked)
+					{
 						ChangeSize(e.getX(), e.getY(), DOP);
 						break;
+					}
 				}
-				//ChangeSize(e.getX(), e.getY(), DOP);
+				//if(DOP.Clicked)
+				//	ChangeSize(e.getX(), e.getY(), DOP);
+
+				
 				repaint();
 			}
 		}
@@ -126,5 +127,5 @@ class EditorPane extends JScrollPane
 
 		}
 
-	}
+}
 }

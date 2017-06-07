@@ -41,8 +41,9 @@ class EditorPane extends JScrollPane
 			{
 				DOP = ButtonPane.drawnVector.lastElement();
 				DOP.x = e.getX();
-				DOP.y = e.getY();	
-				//System.out.println("P");
+				DOP.y = e.getY();
+				TablePane.selectedObject = DOP;
+				TablePane.setTablePane();
 			}
 		}
 
@@ -52,11 +53,28 @@ class EditorPane extends JScrollPane
 
 			if(EditorPane.Made)
 			{
-				//System.out.println("R");
-				DOP.width = - DOP.x + e.getX();
-				DOP.height = - DOP.y + e.getY();
+				int x = e.getX();
+				int y = e.getY();
+				if(DOP.x > x)
+				{
+					int tmp = x;
+					x = DOP.x;
+					DOP.x = tmp;
+				}
+				if(DOP.y > y)
+				{
+					int tmp = y;
+					y = DOP.y;
+					DOP.y = tmp;
+				}
+				DOP.width = - DOP.x + x;
+				if(DOP.width < 0)
+					DOP.width *= -1;
+				DOP.height = - DOP.y + y;
+				if(DOP.height < 0)
+					DOP.height *= -1;
 				DOP.Clicked = false;
-
+				TablePane.setTablePane();
 				repaint();
 
 				EditorPane.Made = false;
@@ -86,6 +104,7 @@ class EditorPane extends JScrollPane
 					if((DOP.y < y) && (y < DOP.y + DOP.height))
 					{
 						DOP.Clicked = true;
+						break;
 					}
 					else
 						DOP.Clicked = false;
@@ -97,41 +116,45 @@ class EditorPane extends JScrollPane
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println(EditorPane.Made);
+
 			if(!EditorPane.Made)
 			{
 				for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
 				{
 					DOP = ButtonPane.drawnVector.get(a);
 					if(DOP.Clicked)
-					{
-						//ChangeSize(e.getX(), e.getY(), DOP);
 						break;
-					}
 				}
 				if(DOP.Clicked)
 				{
 					int x = e.getX();
 					int y = e.getY();
-					if(((DOP.x + 20) < x) && (x < (DOP.x + DOP.width - 20)))
-						if((DOP.y + 20 < y) && (y < DOP.y + DOP.height - 20))
-							MoveObject(x, y, DOP);
-						else
+					int PW = x - DOP.x;
+					int PH = y - DOP.y;
+					if(((DOP.x + 20) > x) || (x > (DOP.x + DOP.width - 20)))
+					{		
+						if((DOP.y + 20 > y) || (y > DOP.y + DOP.height - 20))
+						{							
 							ChangeSize(x, y, DOP);
-					else
-						ChangeSize(x,y,DOP);
 
+						//MoveObject(PW, PH, x, y, DOP);
+						}
+						else
+							MoveObject(PW, PH, x, y, DOP);
+					}	
+					else
+						MoveObject(PW, PH, x, y, DOP);
 
 					repaint();
 				}
+
+
 			}
 		}
-		public void MoveObject(int x, int y, DrawnObject DOP)
-		{
-			DOP.x = x;
-			DOP.y = y;
-			
-			
+		public void MoveObject(int PW, int PH, int x, int y, DrawnObject DOP)
+		{	
+				DOP.x += PW - 30;		
+				DOP.y += PH - 30;
 		}
 		public void ChangeSize(int x, int y, DrawnObject DOP)
 		{

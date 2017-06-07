@@ -20,9 +20,7 @@ public class DrawingObject extends JPanel{
 		for(int a = 0; a < ButtonPane.drawnVector.size(); a++)
 		{
 			DOP = ButtonPane.drawnVector.get(a);
-			
-			System.out.println(a + ". " + DOP.x + "," + DOP.y + "," + DOP.width + "," + DOP.height);
-
+			System.out.println("a." + a);
 			
 			if(DOP.Clicked)
 				g.setColor(Color.RED);

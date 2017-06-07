@@ -41,7 +41,9 @@ class EditorPane extends JScrollPane
 			{
 				DOP = ButtonPane.drawnVector.lastElement();
 				DOP.x = e.getX();
-				DOP.y = e.getY();	
+				DOP.y = e.getY();
+				TablePane.selectedObject = DOP;
+				TablePane.setTablePane();
 				//System.out.println("P");
 			}
 		}
@@ -56,7 +58,7 @@ class EditorPane extends JScrollPane
 				DOP.width = - DOP.x + e.getX();
 				DOP.height = - DOP.y + e.getY();
 				DOP.Clicked = false;
-
+				TablePane.setTablePane();
 				repaint();
 
 				EditorPane.Made = false;
@@ -111,10 +113,11 @@ class EditorPane extends JScrollPane
 				}
 				if(DOP.Clicked)
 				ChangeSize(e.getX(), e.getY(), DOP);
-
+				TablePane.setTablePane();
 				
 				repaint();
 			}
+			
 		}
 		public void ChangeSize(int x, int y, DrawnObject DOP)
 		{

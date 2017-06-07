@@ -93,7 +93,7 @@ class EditorPane extends JScrollPane
 				else  DOP.Clicked = false;
 			}
 		}
-		
+
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			// TODO Auto-generated method stub
@@ -110,11 +110,28 @@ class EditorPane extends JScrollPane
 					}
 				}
 				if(DOP.Clicked)
-				ChangeSize(e.getX(), e.getY(), DOP);
+				{
+					int x = e.getX();
+					int y = e.getY();
+					if(((DOP.x + 20) < x) && (x < (DOP.x + DOP.width - 20)))
+						if((DOP.y + 20 < y) && (y < DOP.y + DOP.height - 20))
+							MoveObject(x, y, DOP);
+						else
+							ChangeSize(x, y, DOP);
+					else
+						ChangeSize(x,y,DOP);
 
-				
-				repaint();
+
+					repaint();
+				}
 			}
+		}
+		public void MoveObject(int x, int y, DrawnObject DOP)
+		{
+			DOP.x = x;
+			DOP.y = y;
+			
+			
 		}
 		public void ChangeSize(int x, int y, DrawnObject DOP)
 		{

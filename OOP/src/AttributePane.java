@@ -13,20 +13,22 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class AttributePane extends JSplitPane
 {
+	JPanel button = new ButtonPane();
+	JTable table = new TablePane();
+	
 	AttributePane(JFrame frame)
 	{
 		super(JSplitPane.VERTICAL_SPLIT);
 		
-		JPanel button = new ButtonPane();
-		JTable table = new TablePane();
 		
-		setAttributePane(frame,button,table);
+		setAttributePane(frame);
 	}
 	
-	public void setAttributePane(JFrame frame,JPanel button, JTable table)
+	public void setAttributePane(JFrame frame)
 	{	
 		setSplitPane(frame);
 		
@@ -76,20 +78,16 @@ class ButtonPane extends JPanel
 			
 			if(strb[0].equals(text))
 			{
-				Button add = new Button();
-				drawnVector.addElement(add);
-				
-				System.out.println("last element"+drawnVector.lastElement().toString());
-				EditorPane.Made = true;
-
-			//    System.out.println("*" + ButtonPane.drawnVector.size());
+				drawnVector.addElement(new Button());
+				TablePane.selectedObject = drawnVector.lastElement();
+				TablePane.setTablePane();
+				//    System.out.println("*" + ButtonPane.drawnVector.size());
 			//	DrawnObject DOP = ButtonPane.drawnVector.get(0);
 			//	System.out.println("XXXXX  " + DOP.width);
 			}
 			else if(strb[1].equals(text))
 			{
 				drawnVector.addElement(new RoundRectangle());
-				EditorPane.Made = true;
 			}
 			else if(strb[2].equals(text))
 			{
@@ -106,14 +104,26 @@ class ButtonPane extends JPanel
 
 class TablePane extends JTable
 {
-	static final String[] strb = {"button","panel","rectangle","circle","sqare","arrow"};
 	static final Object[][] rowData = {{"Attribute","Value"},{"Type",1},{"Height",2}
 						 ,{"Width",3},{"PosX",4},{"PosY",5},{"TextField",6},{"Variable",7}};
 	static final String[] columnData = {"Attribute","Value"};
+	static DrawnObject selectedObject;
+	static DefaultTableModel model = new DefaultTableModel(rowData,columnData);
 	
 	TablePane()
 	{
-		super(rowData,columnData);	
+		this.setModel(model);
+	}
+	
+	static public void setTablePane()
+	{
+		model.setValueAt(selectedObject.type,1,1);
+		model.setValueAt(selectedObject.height,2,1);
+		model.setValueAt(selectedObject.width,3,1);
+		model.setValueAt(selectedObject.x,4,1);
+		model.setValueAt(selectedObject.y,5,1);
+		model.setValueAt(selectedObject.text,6,1);
+		model.setValueAt(selectedObject.variable,7,1);
 	}
 	
 }

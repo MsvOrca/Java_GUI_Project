@@ -97,6 +97,7 @@ class EditorPane extends JScrollPane
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			// TODO Auto-generated method stub
+			System.out.println(EditorPane.Made);
 			if(!EditorPane.Made)
 			{
 				for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
@@ -104,12 +105,12 @@ class EditorPane extends JScrollPane
 					DOP = ButtonPane.drawnVector.get(a);
 					if(DOP.Clicked)
 					{
-						ChangeSize(e.getX(), e.getY(), DOP);
+						//ChangeSize(e.getX(), e.getY(), DOP);
 						break;
 					}
 				}
-				//if(DOP.Clicked)
-				//	ChangeSize(e.getX(), e.getY(), DOP);
+				if(DOP.Clicked)
+				ChangeSize(e.getX(), e.getY(), DOP);
 
 				
 				repaint();

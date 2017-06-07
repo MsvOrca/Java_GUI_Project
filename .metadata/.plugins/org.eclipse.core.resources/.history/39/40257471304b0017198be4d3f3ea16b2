@@ -1,0 +1,129 @@
+import java.awt.Component;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Vector;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class AttributePane extends JSplitPane
+{
+	JPanel button = new ButtonPane();
+	JTable table = new TablePane();
+	
+	AttributePane(JFrame frame)
+	{
+		super(JSplitPane.VERTICAL_SPLIT);
+		
+		
+		setAttributePane(frame);
+	}
+	
+	public void setAttributePane(JFrame frame)
+	{	
+		setSplitPane(frame);
+		
+		this.setTopComponent(button);
+		this.setBottomComponent(table);	
+	}
+	
+	public void setSplitPane(Component frame)
+	{
+		this.setDividerLocation((int)frame.getSize().getHeight()/3*2);
+		this.setDividerSize(5);
+		this.setContinuousLayout(true);
+	}
+	
+}
+
+class ButtonPane extends JPanel 
+{
+	static final String[] strb = {"button","roundrectangle","rectangle","circle"};
+	public static Vector<DrawnObject> drawnVector = new Vector<DrawnObject>();
+	static int Make = 0;
+	JButton[] buttons = new JButton[4];
+	
+	ButtonPane()
+	{
+		this.setLayout(new GridLayout(2,2));
+		setButtons();
+	}
+	
+	public void setButtons()
+	{
+		for(int i=0;i<strb.length;i++)
+		{
+			buttons[i] = new JButton(strb[i]);
+			buttons[i].addActionListener(new ButtonActionListener());
+			this.add(buttons[i]);
+		}
+	}
+	
+	class ButtonActionListener implements ActionListener
+	{
+		
+		public void actionPerformed(ActionEvent action)
+		{
+			JButton button = (JButton)action.getSource();
+			String text = button.getText();
+			
+			if(strb[0].equals(text))
+			{
+				drawnVector.addElement(new Button());
+				TablePane.selectedObject = drawnVector.lastElement();
+				TablePane.setTablePane();
+				//    System.out.println("*" + ButtonPane.drawnVector.size());
+			//	DrawnObject DOP = ButtonPane.drawnVector.get(0);
+			//	System.out.println("XXXXX  " + DOP.width);
+			}
+			else if(strb[1].equals(text))
+			{
+				drawnVector.addElement(new RoundRectangle());
+			}
+			else if(strb[2].equals(text))
+			{
+				drawnVector.addElement(new Rectangle());
+			}
+			else if(strb[3].equals(text))
+			{
+				drawnVector.addElement(new Circle());
+			}
+		}
+	}
+	
+}
+
+class TablePane extends JTable
+{
+	static final Object[][] rowData = {{"Attribute","Value"},{"Type",1},{"Height",2}
+						 ,{"Width",3},{"PosX",4},{"PosY",5},{"TextField",6},{"Variable",7}};
+	static final String[] columnData = {"Attribute","Value"};
+	static DrawnObject selectedObject;
+	static DefaultTableModel model = new DefaultTableModel(rowData,columnData);
+	
+	TablePane()
+	{
+		this.setModel(model);
+	}
+	
+	static public void setTablePane()
+	{
+		model.setValueAt(selectedObject.type,1,1);
+		model.setValueAt(selectedObject.height,2,1);
+		model.setValueAt(selectedObject.width,3,1);
+		model.setValueAt(selectedObject.x,4,1);
+		model.setValueAt(selectedObject.y,5,1);
+		model.setValueAt(selectedObject.text,6,1);
+		model.setValueAt(selectedObject.variable,7,1);
+	}
+	
+}

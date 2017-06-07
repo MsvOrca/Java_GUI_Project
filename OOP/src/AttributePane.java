@@ -81,9 +81,8 @@ class ButtonPane extends JPanel
 				drawnVector.addElement(new Button());
 				TablePane.selectedObject = drawnVector.lastElement();
 				TablePane.setTablePane();
-				//    System.out.println("*" + ButtonPane.drawnVector.size());
-			//	DrawnObject DOP = ButtonPane.drawnVector.get(0);
-			//	System.out.println("XXXXX  " + DOP.width);
+				EditorPane.Made = true;
+		
 			}
 			else if(strb[1].equals(text))
 			{

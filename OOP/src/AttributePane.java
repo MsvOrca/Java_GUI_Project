@@ -87,14 +87,23 @@ class ButtonPane extends JPanel
 			else if(strb[1].equals(text))
 			{
 				drawnVector.addElement(new RoundRectangle());
+				EditorPane.Made = true;
+				TablePane.selectedObject = drawnVector.lastElement();
+				TablePane.setTablePane();
 			}
 			else if(strb[2].equals(text))
 			{
 				drawnVector.addElement(new Rectangle());
+				EditorPane.Made = true;
+				TablePane.selectedObject = drawnVector.lastElement();
+				TablePane.setTablePane();
 			}
 			else if(strb[3].equals(text))
 			{
 				drawnVector.addElement(new Circle());
+				EditorPane.Made = true;
+				TablePane.selectedObject = drawnVector.lastElement();
+				TablePane.setTablePane();
 			}
 		}
 	}

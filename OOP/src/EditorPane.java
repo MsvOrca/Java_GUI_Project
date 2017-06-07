@@ -139,11 +139,7 @@ class EditorPane extends JScrollPane
 					if(((DOP.x + 20) > x) || (x > (DOP.x + DOP.width - 20)))
 					{		
 						if((DOP.y + 20 > y) || (y > DOP.y + DOP.height - 20))
-						{							
 							ChangeSize(x, y, DOP);
-
-						//MoveObject(PW, PH, x, y, DOP);
-						}
 						else
 							MoveObject(PW, PH, x, y, DOP);
 					}	
@@ -152,12 +148,10 @@ class EditorPane extends JScrollPane
 
 					repaint();
 				}
-
-
 			}
 		}
 		public void MoveObject(int PW, int PH, int x, int y, DrawnObject DOP)
-		{	
+		{
 			DOP.x += PW - 30;		
 			DOP.y += PH - 30;
 		}
@@ -182,7 +176,6 @@ class EditorPane extends JScrollPane
 		@Override
 		public void mouseMoved(MouseEvent e) {
 			// TODO Auto-generated method stub
-
 		}
 
 }

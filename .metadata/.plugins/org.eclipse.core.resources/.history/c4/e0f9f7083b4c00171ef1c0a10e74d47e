@@ -5,7 +5,8 @@ interface AddToolOpt{
 	void AddToolBar(JToolBar ToolBar);
 	void CreateTool(JToolBar ToolBar, JFrame Frame);
 }
-public class MakeTool implements AddToolOpt{
+public class MakeTool extends JFrame implements AddToolOpt{
+
 	@Override
 	public void AddToolBar(JToolBar ToolBar) {
 		MenuToolAction MTAction = new MenuToolAction();
@@ -15,9 +16,6 @@ public class MakeTool implements AddToolOpt{
 		JButton TSaveAs = new JButton("SAVE AS");
 		JButton TJava = new JButton("NEW JAVA");
 		JButton TExit = new JButton("EXIT");
-		
-		TNew.addActionListener(MTAction);
-		TExit.addActionListener(MTAction);
 		
 		ToolBar.add(TNew);
 		ToolBar.add(TOpen);

@@ -17,7 +17,6 @@ public class MakeTool implements AddToolOpt{
 		JButton TExit = new JButton("EXIT");
 		
 		TNew.addActionListener(MTAction);
-		TExit.addActionListener(MTAction);
 		
 		ToolBar.add(TNew);
 		ToolBar.add(TOpen);

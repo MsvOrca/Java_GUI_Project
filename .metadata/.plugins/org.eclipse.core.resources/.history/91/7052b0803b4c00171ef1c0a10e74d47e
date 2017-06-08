@@ -1,0 +1,23 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class MenuToolAction extends JPanel implements ActionListener{
+
+	static Boolean needPaint = false;
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		JButton Tmp = (JButton)e.getSource();
+		DrawnObject DOP;
+
+		switch(Tmp.getText())
+		{
+		case "NEW" :
+			System.out.println("HOCHUL");
+			ButtonPane.drawnVector.removeAllElements();
+			needPaint = true;
+			break;
+		}
+	}
+}

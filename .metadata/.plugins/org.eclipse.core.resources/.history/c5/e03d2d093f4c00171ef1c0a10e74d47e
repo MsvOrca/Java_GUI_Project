@@ -15,8 +15,6 @@ public class MakeMenu extends JFrame implements addMenuOpt{
 	
 	@Override
 	public void addMenu(JMenu Menu) {//insert Menu buttons in menu
-		MenuToolAction MT = new MenuToolAction();
-		
 		JMenuItem MNew = new JMenuItem("NEW");
 		JMenuItem MOpen = new JMenuItem("OPEN");
 		JMenuItem MSave = new JMenuItem("SAVE");
@@ -30,8 +28,6 @@ public class MakeMenu extends JFrame implements addMenuOpt{
 		Menu.add(MSaveAs);
 		Menu.add(MJava);
 		Menu.add(MExit);
-		MNew.addActionListener(MT);
-		MExit.addActionListener(MT);
 	}
 
 	@Override

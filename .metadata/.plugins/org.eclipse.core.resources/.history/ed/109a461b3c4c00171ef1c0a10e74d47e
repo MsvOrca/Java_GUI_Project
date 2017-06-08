@@ -8,6 +8,7 @@ public class DrawingObject extends JPanel{
 	static Boolean needPaint = false;
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		g.setColor(Color.BLUE);
 		DrawnObject DOP;
 		if(needPaint)
 		{

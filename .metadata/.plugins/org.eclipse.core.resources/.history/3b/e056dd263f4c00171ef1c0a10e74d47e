@@ -30,8 +30,7 @@ public class MakeMenu extends JFrame implements addMenuOpt{
 		Menu.add(MSaveAs);
 		Menu.add(MJava);
 		Menu.add(MExit);
-		MNew.addActionListener(MT);
-		MExit.addActionListener(MT);
+		Menu.addActionListener(MT);
 	}
 
 	@Override

@@ -113,24 +113,23 @@ class EditorPane extends JScrollPane
                 DOP = ButtonPane.drawnVector.get(a);
 
 
-				if((DOP.x < x) && (x < DOP.x + DOP.width))
-				{		
-					if((DOP.y < y) && (y < DOP.y + DOP.height))
-					{
-						DOP.Clicked = true;
-                        break;
-					}
-					else
-						DOP.Clicked = false;
-				}
-				else  DOP.Clicked = false;	
-			}
+                if((DOP.x < x) && (x < DOP.x + DOP.width))
+                {		
+                	if((DOP.y < y) && (y < DOP.y + DOP.height))
+                	{
+                		DOP.Clicked = true;
+                		break;
+                	}
+                	else
+                		DOP.Clicked = false;
+                }
+                else  DOP.Clicked = false;	
+            }
 		}
-		
+
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println(EditorPane.Made);
 			if(!EditorPane.Made)
 			{
 				for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
@@ -138,7 +137,6 @@ class EditorPane extends JScrollPane
 					DOP = ButtonPane.drawnVector.get(a);
 					if(DOP.Clicked)
 					{
-						//ChangeSize(e.getX(), e.getY(), DOP);
 						TablePane.selectedObject = DOP;
 						TablePane.setTablePane();
 						break;
@@ -189,7 +187,6 @@ class EditorPane extends JScrollPane
 				int tmp = DOP.y;
 				DOP.y = y;
 				DOP.height = tmp - DOP.y;
-
 			}
 			else
 				DOP.height = y - DOP.y;

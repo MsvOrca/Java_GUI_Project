@@ -3,4 +3,5 @@
 <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
 <fullyQualifiedTypeName name="ButtonPane"/>
 <fullyQualifiedTypeName name="EditorPane"/>
+<fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
 </qualifiedTypeNameHistroy>

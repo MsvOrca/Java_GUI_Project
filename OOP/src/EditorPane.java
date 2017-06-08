@@ -11,14 +11,9 @@ class EditorPane extends JScrollPane
 {
 	static DrawingObject DO = new DrawingObject();
 	static Boolean Made = false;
-<<<<<<< HEAD
 
-=======
-	
 	DrawnObjectDialog dDialog = new DrawnObjectDialog(MainClass.frame,"Setting Object");
 	
-	
->>>>>>> f7ce76e98d6bd9004494ab4efbeb44c7d2636fb6
 	EditorPane()
 	{
 		super(DO);
@@ -54,7 +49,6 @@ class EditorPane extends JScrollPane
 				DOP.y = e.getY();
 				TablePane.selectedObject = DOP;
 				TablePane.setTablePane();
-				//System.out.println("P");
 			}
 		}
 
@@ -64,9 +58,27 @@ class EditorPane extends JScrollPane
 
 			if(EditorPane.Made)
 			{
-				//System.out.println("R");
-				DOP.width = - DOP.x + e.getX();
-				DOP.height = - DOP.y + e.getY();
+                int x = e.getX();
+                int y = e.getY();
+                if(DOP.x > x)
+                {
+                    int tmp = x;
+                    x = DOP.x;
+                    DOP.x = tmp;
+                }
+                if(DOP.y > y)
+                {
+                    int tmp = y;
+                    y = DOP.y;
+                    DOP.y = tmp;
+                }
+                DOP.width = - DOP.x + x;
+                if(DOP.width < 0)
+                    DOP.width *= -1;
+                DOP.height = - DOP.y + y;
+                if(DOP.height < 0)
+                    DOP.height *= -1;
+
 				DOP.Clicked = false;
 				TablePane.setTablePane();
 				repaint();
@@ -94,12 +106,19 @@ class EditorPane extends JScrollPane
 			for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
 			{
 				DOP = ButtonPane.drawnVector.get(a);
+                DOP.Clicked = false;
+            }
+            for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
+            {
+                DOP = ButtonPane.drawnVector.get(a);
+
 
 				if((DOP.x < x) && (x < DOP.x + DOP.width))
 				{		
 					if((DOP.y < y) && (y < DOP.y + DOP.height))
 					{
 						DOP.Clicked = true;
+                        break;
 					}
 					else
 						DOP.Clicked = false;
@@ -126,26 +145,37 @@ class EditorPane extends JScrollPane
 					}
 				}
 				if(DOP.Clicked)
-				ChangeSize(e.getX(), e.getY(), DOP);
-				TablePane.setTablePane();
-				
-				repaint();
+                {
+                    int x = e.getX();
+                    int y = e.getY();
+                    int PW = x - DOP.x;
+                    int PH = y - DOP.y;
+                    if(((DOP.x + 20) > x) || (x > (DOP.x + DOP.width - 20)))
+                    {        
+                        if((DOP.y + 20 > y) || (y > DOP.y + DOP.height - 20))
+                            ChangeSize(x, y, DOP);
+                        else
+                            MoveObject(PW, PH, x, y, DOP);
+                    }    
+                    else
+                        MoveObject(PW, PH, x, y, DOP);
+
+                    repaint();
+                }
+
 			}
-<<<<<<< HEAD
+
 		}
 
 		public void MoveObject(int PW, int PH, int x, int y, DrawnObject DOP)
 		{
 			DOP.x += PW - (DOP.width/2);		
 			DOP.y += PH - (DOP.height/2);
-=======
-			
->>>>>>> f7ce76e98d6bd9004494ab4efbeb44c7d2636fb6
 		}
 
 		public void ChangeSize(int x, int y, DrawnObject DOP)
 		{
-<<<<<<< HEAD
+
 			if(DOP.x > x)
 			{
 				int tmp = DOP.x;
@@ -163,10 +193,7 @@ class EditorPane extends JScrollPane
 			}
 			else
 				DOP.height = y - DOP.y;
-=======
-			DOP.width = x - DOP.x;
-			DOP.height = y - DOP.y;
->>>>>>> f7ce76e98d6bd9004494ab4efbeb44c7d2636fb6
+
 		}
 
 		@Override

@@ -1,3 +1,5 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -9,6 +11,8 @@ class EditorPane extends JScrollPane
 {
 	static DrawingObject DO = new DrawingObject();
 	static Boolean Made = false;
+
+	DrawnObjectDialog dDialog = new DrawnObjectDialog(MainClass.frame,"Setting Object");
 	
 	EditorPane()
 	{
@@ -16,6 +20,7 @@ class EditorPane extends JScrollPane
 		setScroll();
 		this.addMouseListener(new ButtonMouseListener());
 		this.addMouseMotionListener(new ButtonMouseListener());
+		this.addKeyListener(new ButtonMouseListener());
 	}
 
 	public void setScroll()
@@ -24,7 +29,7 @@ class EditorPane extends JScrollPane
 		this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 	}
 
-	class ButtonMouseListener implements MouseListener, MouseMotionListener{
+	class ButtonMouseListener implements MouseListener, MouseMotionListener, KeyListener{
 		DrawnObject DOP ;
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -41,7 +46,9 @@ class EditorPane extends JScrollPane
 			{
 				DOP = ButtonPane.drawnVector.lastElement();
 				DOP.x = e.getX();
-				DOP.y = e.getY();	
+				DOP.y = e.getY();
+				TablePane.selectedObject = DOP;
+				TablePane.setTablePane();
 				//System.out.println("P");
 			}
 		}
@@ -56,12 +63,14 @@ class EditorPane extends JScrollPane
 				DOP.width = - DOP.x + e.getX();
 				DOP.height = - DOP.y + e.getY();
 				DOP.Clicked = false;
-
+				TablePane.setTablePane();
 				repaint();
 
 				EditorPane.Made = false;
 			}
-
+			
+			dDialog.setVisible(DOP.visible);
+			DOP.visible = false;
 		}
 
 		@Override
@@ -90,10 +99,10 @@ class EditorPane extends JScrollPane
 					else
 						DOP.Clicked = false;
 				}
-				else  DOP.Clicked = false;
+				else  DOP.Clicked = false;	
 			}
 		}
-
+		
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			// TODO Auto-generated method stub
@@ -106,40 +115,47 @@ class EditorPane extends JScrollPane
 					if(DOP.Clicked)
 					{
 						//ChangeSize(e.getX(), e.getY(), DOP);
+						TablePane.selectedObject = DOP;
+						TablePane.setTablePane();
 						break;
 					}
 				}
 				if(DOP.Clicked)
-				{
-					int x = e.getX();
-					int y = e.getY();
-					if(((DOP.x + 20) < x) && (x < (DOP.x + DOP.width - 20)))
-						if((DOP.y + 20 < y) && (y < DOP.y + DOP.height - 20))
-					
-							{MoveObject(x, y, DOP);
-							break;
-							}
-						else
-							ChangeSize(x, y, DOP);
-					else
-						ChangeSize(x,y,DOP);
-
-
-					repaint();
-				}
+				ChangeSize(e.getX(), e.getY(), DOP);
+				TablePane.setTablePane();
+				
+				repaint();
 			}
+
 		}
-		public void MoveObject(int x, int y, DrawnObject DOP)
+
+		public void MoveObject(int PW, int PH, int x, int y, DrawnObject DOP)
 		{
-			DOP.x = x;
-			DOP.y = y;
-			
-			
+			DOP.x += PW - (DOP.width/2);		
+			DOP.y += PH - (DOP.height/2);
 		}
+
 		public void ChangeSize(int x, int y, DrawnObject DOP)
 		{
-			DOP.width = x - DOP.x;
-			DOP.height = y - DOP.y;
+
+			if(DOP.x > x)
+			{
+				int tmp = DOP.x;
+				DOP.x = x;
+				DOP.width = tmp - DOP.x;
+			}
+			else
+				DOP.width = x - DOP.x;
+			if(DOP.y > y)
+			{
+				int tmp = DOP.y;
+				DOP.y = y;
+				DOP.height = tmp - DOP.y;
+
+			}
+			else
+				DOP.height = y - DOP.y;
+
 		}
 
 		@Override
@@ -148,5 +164,35 @@ class EditorPane extends JScrollPane
 
 		}
 
-}
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// TODO Auto-generated method stub
+			int KeyCod = e.getKeyCode();
+			System.out.println("a "+ KeyCod);
+			switch(KeyCod){
+			case 127 :
+				for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
+				{	
+					DOP = ButtonPane.drawnVector.get(a);
+					if(DOP.Clicked)
+						ButtonPane.drawnVector.remove(a);
+				}
+				break;
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			int KeyCod = e.getKeyCode();
+			System.out.println("B "+ KeyCod);
+		}
+
+	}
 }

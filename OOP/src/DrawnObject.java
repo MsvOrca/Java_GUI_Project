@@ -9,6 +9,7 @@ public class DrawnObject
 	int height;
 	Boolean Clicked;
 	String text;
+	boolean visible = true;
 	
 	public DrawnObject()
 	{

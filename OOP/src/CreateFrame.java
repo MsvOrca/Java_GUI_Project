@@ -10,6 +10,7 @@ public class CreateFrame extends JFrame{
 	JToolBar tBar = new JToolBar();
 	Container contentPane;
 	
+	
 	CreateFrame(){
 		setTitle("Java Panel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -17,8 +18,8 @@ public class CreateFrame extends JFrame{
 		
 		//Create Menu
 		MakeMenu MakingMenu = new MakeMenu();
-		//MakingMenu.CreateMenu(new JMenu("FILE"), MenuBar);
-		//setJMenuBar(MenuBar);
+		MakingMenu.CreateMenu(new JMenu("FILE"), MenuBar);
+		setJMenuBar(MenuBar);
 		//Complete Creating Menu
 
 		//Create SplitPane{
@@ -26,7 +27,7 @@ public class CreateFrame extends JFrame{
 		//Create MakeToolBar{
 		MakeTool MakingTool = new MakeTool();
 		//}Complete Creating ToolBar
-		contentPane = new ContentPane(this,tBar,MakingTool,MakingMenu,MenuBar);
+		contentPane = new ContentPane(this,tBar,MakingTool);
         //MakeContentPane.setContentPane(this,sPane,tBar,MakingTool);
         //makeSplitPane.addSplitPane(this, sPane, tBar, MakingTool);
         //Complete Creating SplitPane}

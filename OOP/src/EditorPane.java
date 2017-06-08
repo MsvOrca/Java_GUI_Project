@@ -10,6 +10,9 @@ class EditorPane extends JScrollPane
 	static DrawingObject DO = new DrawingObject();
 	static Boolean Made = false;
 	
+	DrawnObjectDialog dDialog = new DrawnObjectDialog(MainClass.frame,"Setting Object");
+	
+	
 	EditorPane()
 	{
 		super(DO);
@@ -44,6 +47,7 @@ class EditorPane extends JScrollPane
 				DOP.y = e.getY();
 				TablePane.selectedObject = DOP;
 				TablePane.setTablePane();
+				//System.out.println("P");
 			}
 		}
 
@@ -53,33 +57,18 @@ class EditorPane extends JScrollPane
 
 			if(EditorPane.Made)
 			{
-				int x = e.getX();
-				int y = e.getY();
-				if(DOP.x > x)
-				{
-					int tmp = x;
-					x = DOP.x;
-					DOP.x = tmp;
-				}
-				if(DOP.y > y)
-				{
-					int tmp = y;
-					y = DOP.y;
-					DOP.y = tmp;
-				}
-				DOP.width = - DOP.x + x;
-				if(DOP.width < 0)
-					DOP.width *= -1;
-				DOP.height = - DOP.y + y;
-				if(DOP.height < 0)
-					DOP.height *= -1;
+				//System.out.println("R");
+				DOP.width = - DOP.x + e.getX();
+				DOP.height = - DOP.y + e.getY();
 				DOP.Clicked = false;
 				TablePane.setTablePane();
 				repaint();
 
 				EditorPane.Made = false;
 			}
-
+			
+			dDialog.setVisible(DOP.visible);
+			DOP.visible = false;
 		}
 
 		@Override
@@ -98,84 +87,55 @@ class EditorPane extends JScrollPane
 			for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
 			{
 				DOP = ButtonPane.drawnVector.get(a);
-				DOP.Clicked = false;
-			}
-			for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
-			{
-				DOP = ButtonPane.drawnVector.get(a);
 
 				if((DOP.x < x) && (x < DOP.x + DOP.width))
 				{		
 					if((DOP.y < y) && (y < DOP.y + DOP.height))
 					{
 						DOP.Clicked = true;
-						break;
 					}
 					else
 						DOP.Clicked = false;
 				}
-				else  DOP.Clicked = false;
+				else  DOP.Clicked = false;	
 			}
 		}
-
+		
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			// TODO Auto-generated method stub
-
+			System.out.println(EditorPane.Made);
 			if(!EditorPane.Made)
 			{
 				for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
 				{
 					DOP = ButtonPane.drawnVector.get(a);
 					if(DOP.Clicked)
+					{
+						//ChangeSize(e.getX(), e.getY(), DOP);
+						TablePane.selectedObject = DOP;
+						TablePane.setTablePane();
 						break;
+					}
 				}
 				if(DOP.Clicked)
-				{
-					int x = e.getX();
-					int y = e.getY();
-					int PW = x - DOP.x;
-					int PH = y - DOP.y;
-					if(((DOP.x + 20) > x) || (x > (DOP.x + DOP.width - 20)))
-					{		
-						if((DOP.y + 20 > y) || (y > DOP.y + DOP.height - 20))
-							ChangeSize(x, y, DOP);
-						else
-							MoveObject(PW, PH, x, y, DOP);
-					}	
-					else
-						MoveObject(PW, PH, x, y, DOP);
-
-					repaint();
-				}
+				ChangeSize(e.getX(), e.getY(), DOP);
+				TablePane.setTablePane();
+				
+				repaint();
 			}
-		}
-		public void MoveObject(int PW, int PH, int x, int y, DrawnObject DOP)
-		{
-			DOP.x += PW - 30;		
-			DOP.y += PH - 30;
+			
 		}
 		public void ChangeSize(int x, int y, DrawnObject DOP)
 		{
-			if(DOP.x > x)
-			{
-				DOP.width = DOP.x - x;
-				DOP.x = x;
-			}
-			else
-				DOP.width = x - DOP.x;
-			if(DOP.y > y)
-			{
-				DOP.height = DOP.y - y;
-				DOP.y = y;
-			}
-			else
-				DOP.height = y - DOP.y;
+			DOP.width = x - DOP.x;
+			DOP.height = y - DOP.y;
 		}
 
 		@Override
 		public void mouseMoved(MouseEvent e) {
 			// TODO Auto-generated method stub
+
 		}
 
 }

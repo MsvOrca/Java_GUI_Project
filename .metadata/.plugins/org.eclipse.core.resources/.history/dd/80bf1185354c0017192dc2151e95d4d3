@@ -16,6 +16,8 @@ public class MakeTool extends JFrame implements AddToolOpt{
 		JButton TSaveAs = new JButton("SAVE AS");
 		JButton TJava = new JButton("NEW JAVA");
 		JButton TExit = new JButton("EXIT");
+		JButton TDelete = new JButton("DELETE");
+		TDelete.addActionListener(MTAction);
 		
 		ToolBar.add(TNew);
 		ToolBar.add(TOpen);
@@ -25,7 +27,8 @@ public class MakeTool extends JFrame implements AddToolOpt{
 		ToolBar.addSeparator();
 		ToolBar.add(TJava);
 		ToolBar.add(TExit);
-		
+		ToolBar.addSeparator();
+		ToolBar.add(TDelete);
 	}
 
 	@Override

@@ -1,0 +1,21 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class MenuToolAction implements ActionListener{
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		JButton Tmp = (JButton)e.getSource();
+
+		if(Tmp.getText().equals("Delete"))
+			for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
+			{	
+				DrawnObject DOP = ButtonPane.drawnVector.get(a);
+				if(DOP.Clicked)
+					ButtonPane.drawnVector.remove(a);
+			}
+
+	}
+}

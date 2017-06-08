@@ -20,25 +20,17 @@ public class DrawingObject extends JPanel{
 		for(int a = 0; a < ButtonPane.drawnVector.size(); a++)
 		{
 			DOP = ButtonPane.drawnVector.get(a);
-
+			System.out.println("a." + a);
+			
 			if(DOP.Clicked)
+			{
 				g.setColor(Color.RED);
+				TablePane.selectedObject = DOP;
+			}
 			else
 				g.setColor(Color.blue);
 
-			switch(DOP.type)
-			{
-			case "Rectangle" :
-				g.fillRect(DOP.x, DOP.y, DOP.width, DOP.height);
-				break;
-			case "Circle" :
-				g.fillOval(DOP.x, DOP.y, DOP.width, DOP.height);
-				break;
-			case "RoundRectangle" :
-				g.fillRoundRect(DOP.x, DOP.y, DOP.width, DOP.height, 30, 30);
-				break;
-
-			}
+			g.fillRect(DOP.x, DOP.y, DOP.width, DOP.height);
 		}
 	}
 }

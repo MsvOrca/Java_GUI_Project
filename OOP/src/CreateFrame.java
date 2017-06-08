@@ -10,6 +10,7 @@ public class CreateFrame extends JFrame{
 	JToolBar tBar = new JToolBar();
 	Container contentPane;
 	
+	
 	CreateFrame(){
 		setTitle("Java Panel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

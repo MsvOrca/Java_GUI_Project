@@ -21,6 +21,11 @@ class EditorPane extends JScrollPane
 		this.addMouseListener(new ButtonMouseListener());
 		this.addMouseMotionListener(new ButtonMouseListener());
 		this.addKeyListener(new ButtonMouseListener());
+		if(!DrawingObject.needPaint)
+		{
+			repaint();
+			DrawingObject.needPaint = false;
+		}
 	}
 
 	public void setScroll()

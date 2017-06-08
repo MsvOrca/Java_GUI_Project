@@ -1,12 +1,13 @@
 import javax.swing.*;
 import java.awt.event.*;
+import java.awt.*;
 
-
-public class MenuToolAction implements ActionListener{
+public class MenuToolAction extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+
 		if(e.getSource() instanceof JButton)
 		{
 			JButton Tmp = (JButton)e.getSource();
@@ -15,7 +16,6 @@ public class MenuToolAction implements ActionListener{
 			{
 			case "NEW" :
 				ButtonPane.drawnVector.removeAllElements();
-				DrawingObject.needPaint = true;
 				break;
 			case "EXIT" :
 				System.exit(0);
@@ -29,8 +29,7 @@ public class MenuToolAction implements ActionListener{
 			switch(Tmp.getText())
 			{
 			case "NEW" :
-				ButtonPane.drawnVector.removeAllElements();			
-				DrawingObject.needPaint = true;
+				ButtonPane.drawnVector.removeAllElements();
 				break;
 			case "EXIT" :
 				System.exit(0);

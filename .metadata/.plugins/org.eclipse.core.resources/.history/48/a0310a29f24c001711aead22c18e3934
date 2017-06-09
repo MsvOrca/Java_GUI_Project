@@ -26,7 +26,6 @@ public class MenuToolAction implements ActionListener{
 		{
 			JMenuItem Tmp = (JMenuItem)e.getSource();
 			
-			DrawingObject DO = new DrawingObject();
 			switch(Tmp.getText())
 			{
 			case "NEW" :

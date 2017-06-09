@@ -16,7 +16,6 @@ public class MenuToolAction implements ActionListener{
 				ButtonPane.drawnVector.removeAllElements();
 				//DrawingObject.needPaint = true;
 				System.out.println("NEW");
-				EditorPane.DO.repaint();
 				break;
 			case "EXIT" :
 				System.exit(0);

@@ -4,4 +4,5 @@
 <fullyQualifiedTypeName name="ButtonPane"/>
 <fullyQualifiedTypeName name="EditorPane"/>
 <fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
+<fullyQualifiedTypeName name="DrawnObjectDialog.DialogInputElement"/>
 </qualifiedTypeNameHistroy>

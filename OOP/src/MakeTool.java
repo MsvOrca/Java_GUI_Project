@@ -1,14 +1,20 @@
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
-import java.io.*;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JToolBar;
+import com.google.gson.*;
 
 interface AddToolOpt{
 	void AddToolBar(JToolBar ToolBar);
 	void CreateTool(JToolBar ToolBar, JFrame Frame);
 }
-public class MakeTool implements AddToolOpt{
+public class MakeTool extends JFrame implements AddToolOpt{
+
 	@Override
 	public void AddToolBar(JToolBar ToolBar) {
 		MenuToolAction MTAction = new MenuToolAction();
@@ -19,8 +25,7 @@ public class MakeTool implements AddToolOpt{
 		JButton TJava = new JButton("NEW JAVA");
 		JButton TExit = new JButton("EXIT");
 		
-		TNew.addActionListener(MTAction);
-		TExit.addActionListener(MTAction);
+		TSave.addActionListener(new SaveButtonActionListener());
 		
 		ToolBar.add(TNew);
 		ToolBar.add(TOpen);
@@ -41,28 +46,36 @@ public class MakeTool implements AddToolOpt{
 		Frame.add(ToolBar, BorderLayout.NORTH);
 	}
 	
-	
-	class SaveActionListener implements ActionListener
+	class SaveButtonActionListener implements ActionListener
 	{
+
 		@Override
-		public void actionPerformed(ActionEvent action) {
+		public void actionPerformed(ActionEvent event) {
 			// TODO Auto-generated method stub
+			
 			try
 			{
-				FileWriter writer = new FileWriter("C:\\JavaFileIoEx\\"+"aaa"+".text");
-
-				writer.write("");
-				writer.flush();
+				System.out.println("In1!!");
+				FileWriter writer = new FileWriter("C:\\JavaFileIoEx\\abc.txt");
+				DrawnObject traversal;
+				Gson gson = new Gson();
+				
+				for(int i=0;i<ButtonPane.drawnVector.size();i++)
+				{
+					traversal = ButtonPane.drawnVector.elementAt(i);
+					String inp = gson.toJson(traversal);
+					writer.write(inp);
+					writer.flush();
+				}
 				writer.close();
 			}
 			catch(IOException io)
 			{
-				System.out.println("IOException Happen!");
-				System.out.println(io);
+				System.out.println("Tool.SaveButton.ActionListener.Exception Happened!!");
 			}
-	
 			
+	
 		}
-		}
+		
 	}
 }

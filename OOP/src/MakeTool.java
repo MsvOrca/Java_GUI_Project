@@ -15,6 +15,8 @@ interface AddToolOpt{
 }
 public class MakeTool extends JFrame implements AddToolOpt{
 
+	static SaveDialog saveDialog = new SaveDialog(MainClass.frame,"Save File");
+	
 	@Override
 	public void AddToolBar(JToolBar ToolBar) {
 		MenuToolAction MTAction = new MenuToolAction();
@@ -24,11 +26,10 @@ public class MakeTool extends JFrame implements AddToolOpt{
 		JButton TSaveAs = new JButton("SAVE AS");
 		JButton TJava = new JButton("NEW JAVA");
 		JButton TExit = new JButton("EXIT");
-
-		TNew.addActionListener(MTAction);
-		TExit.addActionListener(MTAction);
+		
 		TSave.addActionListener(new SaveButtonActionListener());
-
+		TSaveAs.addActionListener(new SaveAsButtonActionListener());
+		
 		ToolBar.add(TNew);
 		ToolBar.add(TOpen);
 		ToolBar.addSeparator();
@@ -37,7 +38,7 @@ public class MakeTool extends JFrame implements AddToolOpt{
 		ToolBar.addSeparator();
 		ToolBar.add(TJava);
 		ToolBar.add(TExit);
-
+		
 	}
 
 	@Override
@@ -47,21 +48,31 @@ public class MakeTool extends JFrame implements AddToolOpt{
 		ToolBar.setFloatable(false);
 		Frame.add(ToolBar, BorderLayout.NORTH);
 	}
+	
+	class SaveAsButtonActionListener implements ActionListener
+	{
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			saveDialog.setVisible(true);
+		}
+		
+	}
+	
 	class SaveButtonActionListener implements ActionListener
 	{
 
 		@Override
 		public void actionPerformed(ActionEvent event) {
 			// TODO Auto-generated method stub
-
+			
 			try
 			{
-				System.out.println("In1!!");
-				FileWriter writer = new FileWriter("C:\\JavaFileIoEx\\abc.txt");
+				FileWriter writer = new FileWriter("C:\\JavaFileIoEx\\abc.json");
 				DrawnObject traversal;
 				Gson gson = new Gson();
-
+				
 				for(int i=0;i<ButtonPane.drawnVector.size();i++)
 				{
 					traversal = ButtonPane.drawnVector.elementAt(i);
@@ -75,10 +86,7 @@ public class MakeTool extends JFrame implements AddToolOpt{
 			{
 				System.out.println("Tool.SaveButton.ActionListener.Exception Happened!!");
 			}
-
-
 		}
-
-
+		
 	}
 }

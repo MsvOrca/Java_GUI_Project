@@ -16,15 +16,23 @@ public class CreateFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(FWIDTH,FHEIGHT);
 		
+		//Create Menu
 		MakeMenu MakingMenu = new MakeMenu();
 		MakingMenu.CreateMenu(new JMenu("FILE"), MenuBar);
 		setJMenuBar(MenuBar);
-		//Complete Creating MenuBar
-	
+		//Complete Creating Menu
+
+		//Create SplitPane{
+		
+		//Create MakeToolBar{
 		MakeTool MakingTool = new MakeTool();
 		//}Complete Creating ToolBar
 		contentPane = new ContentPane(this,tBar,MakingTool);
         //MakeContentPane.setContentPane(this,sPane,tBar,MakingTool);
+        //makeSplitPane.addSplitPane(this, sPane, tBar, MakingTool);
+        //Complete Creating SplitPane}
+
+
 
 		setVisible(true);
 	}

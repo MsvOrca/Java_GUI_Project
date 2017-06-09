@@ -1,5 +1,8 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.io.*;
 
 interface AddToolOpt{
 	void AddToolBar(JToolBar ToolBar);
@@ -38,4 +41,28 @@ public class MakeTool implements AddToolOpt{
 		Frame.add(ToolBar, BorderLayout.NORTH);
 	}
 	
+	
+	class SaveActionListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent action) {
+			// TODO Auto-generated method stub
+			try
+			{
+				FileWriter writer = new FileWriter("C:\\JavaFileIoEx\\"+"aaa"+".text");
+
+				writer.write("");
+				writer.flush();
+				writer.close();
+			}
+			catch(IOException io)
+			{
+				System.out.println("IOException Happen!");
+				System.out.println(io);
+			}
+	
+			
+		}
+		}
+	}
 }

@@ -1,5 +1,4 @@
 import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.TextField;
 import java.awt.event.*;
@@ -55,11 +54,11 @@ public class AttributePane extends JSplitPane
 		public void valueChanged(ListSelectionEvent event) {
 			// TODO Auto-generated method stub
 			//DefaultListSelectionModel model = (DefaultListSelectionModel)event.getSource();
-	
-			System.out.println("ListSelectionEvent Happen");
-			TablePane.selectedRow = table.getSelectedRow();
-			TablePane.activated = true;
-		}
+			
+			
+			int selectedRow = table.getSelectedRow();
+			
+			}
 		
 	}
 	
@@ -126,8 +125,8 @@ class ButtonPane extends JPanel
                 EditorPane.Made = true;
                 TablePane.selectedObject = drawnVector.lastElement();
                 TablePane.setTablePane();
+
 			}
-			System.out.println("selectedObject :"+TablePane.selectedObject);
 		}
 	}
 	
@@ -140,14 +139,10 @@ class TablePane extends JTable
 	static final String[] columnData = {"Attribute","Value"};
 	static DrawnObject selectedObject;
 	static DefaultTableModel model = new DefaultTableModel(rowData,columnData);
-	static int selectedRow = 0;
-	static boolean activated = false;
-	
 	
 	TablePane()
 	{
 		this.setModel(model);
-		model.addTableModelListener(new TablePaneListener());
 	}
 	
 	static public void setTablePane()
@@ -161,62 +156,7 @@ class TablePane extends JTable
 		model.setValueAt(selectedObject.variable,7,1);
 	}
 	
-	class TablePaneListener implements TableModelListener
-	{
-
-		@Override
-		public void tableChanged(TableModelEvent event) {
-			// TODO Auto-generated method stub
-			System.out.println("activated :"+activated);
-			System.out.println("selectedRow : "+selectedRow);
-			if(activated)
-			{
-				Object mid;
-				DefaultTableModel model = (DefaultTableModel)event.getSource();
-				switch(selectedRow)
-				{
-				case 1:
-					selectedObject.type =  (String)model.getValueAt(selectedRow, 1);
-					System.out.println("type :" +selectedObject.type);
-					break;
-				case  2:
-					System.out.println(model.getValueAt(selectedRow, 1).toString());
-					mid =  model.getValueAt(selectedRow, 1);
-					selectedObject.height = Integer.parseInt(mid.toString());
-					System.out.println("height :"+selectedObject.height);
-					break;
-				case 3:
-					mid =  model.getValueAt(selectedRow, 1);
-					selectedObject.width = Integer.parseInt(mid.toString());
-					System.out.println("width : "+selectedObject.width);
-					break;
-				case 4:
-					mid =  model.getValueAt(selectedRow, 1);
-					selectedObject.x = Integer.parseInt(mid.toString());
-					System.out.println("x :"+selectedObject.x);
-					break;
-				case 5:
-					mid =  model.getValueAt(selectedRow, 1);
-					selectedObject.y = Integer.parseInt(mid.toString());
-					System.out.println("y: "+selectedObject.y);
-					break;
-				case 6:
-					selectedObject.text =  (String)model.getValueAt(selectedRow, 1);
-					System.out.println("text :"+selectedObject.text);
-					break;
-				case 7:
-					selectedObject.variable =  (String)model.getValueAt(selectedRow, 1);
-					System.out.println("Variable :"+selectedObject.variable);
-					break;
-				}
-				activated = false;
-				setTablePane();
-				EditorPane.DO.repaint();
-				//EditorPane.DO.DrawShape(selectedObject);
-			}
-		}
-		
-	}
+	
 	
 	
 }

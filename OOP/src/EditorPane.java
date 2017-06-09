@@ -88,6 +88,7 @@ class EditorPane extends JScrollPane
 				if(DOP.height < 0)
 					DOP.height *= -1;
 
+
 				DOP.Clicked = false;
 				TablePane.selectedObject = DOP;
 				TablePane.setTablePane();
@@ -139,10 +140,11 @@ class EditorPane extends JScrollPane
 				else  DOP.Clicked = false;	
 			}
 		}
-
+		
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			// TODO Auto-generated method stub
+
 			if(!EditorPane.Made)
 			{
 				for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
@@ -150,6 +152,7 @@ class EditorPane extends JScrollPane
 					DOP = ButtonPane.drawnVector.get(a);
 					if(DOP.Clicked)
 					{
+						//ChangeSize(e.getX(), e.getY(), DOP);
 						TablePane.selectedObject = DOP;
 						TablePane.setTablePane();
 						break;
@@ -199,6 +202,7 @@ class EditorPane extends JScrollPane
 				int tmp = DOP.y;
 				DOP.y = y;
 				DOP.height = tmp - DOP.y;
+
 			}
 			else
 				DOP.height = y - DOP.y;
@@ -218,7 +222,6 @@ class EditorPane extends JScrollPane
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
 			int KeyCod = e.getKeyCode();
-			System.out.println("a "+ KeyCod);
 			switch(KeyCod){
 			case 127 :
 				for(int a = ButtonPane.drawnVector.size() - 1; a >= 0; a--)
@@ -236,7 +239,6 @@ class EditorPane extends JScrollPane
 		{
 			// TODO Auto-generated method stub
 			int KeyCod = e.getKeyCode();
-			System.out.println("B "+ KeyCod);
 		}
 
 		public void DeleteComponent()

@@ -9,6 +9,11 @@ public class DrawingObject extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		DrawnObject DOP;
+		if(needPaint)
+		{
+			repaint();
+			needPaint = false;
+		}	
 		for(int a = 0; a < ButtonPane.drawnVector.size(); a++)
 		{
 			DOP = ButtonPane.drawnVector.get(a);
@@ -38,4 +43,5 @@ public class DrawingObject extends JPanel{
 			break;
 		}
 	}
+
 }

@@ -21,6 +21,7 @@ public class DrawingObject extends JPanel{
 			DrawShape(DOP, g);
 		}
 	}
+	
 	void DrawShape(DrawnObject DOP, Graphics g)
 	{
 		if(DOP.Clicked)

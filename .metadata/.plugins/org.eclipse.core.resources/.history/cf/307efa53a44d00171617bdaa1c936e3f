@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.IOException;
 
 
 public class MenuToolAction implements ActionListener{
@@ -23,19 +22,12 @@ public class MenuToolAction implements ActionListener{
 			case "OPEN" :
 				MakeTool.openDialog.setVisible(true);
 				break;
-			case "NEW JAVA" :
-				try {
-					new SaveJavaFile();
-				} catch (IOException e1) {
-					e1.printStackTrace();
 				}
-				break;
-			}
 		}
 		else if(e.getSource() instanceof JMenuItem)
 		{
 			JMenuItem Tmp = (JMenuItem)e.getSource();
-
+			
 			switch(Tmp.getText())
 			{
 			case "NEW" :
@@ -45,12 +37,8 @@ public class MenuToolAction implements ActionListener{
 			case "EXIT" :
 				System.exit(0);
 				break;
-			case "OPEN" :
-				MakeTool.openDialog.setVisible(true);
-				break;
 			}
 		}
+		
 	}
-
 }
-

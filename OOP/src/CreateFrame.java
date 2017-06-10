@@ -12,7 +12,7 @@ public class CreateFrame extends JFrame{
 	
 	
 	CreateFrame(){
-		setTitle("Java Panel");
+		setTitle("JavaPanel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(FWIDTH,FHEIGHT);
 		

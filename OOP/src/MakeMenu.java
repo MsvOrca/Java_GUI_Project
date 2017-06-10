@@ -23,6 +23,8 @@ public class MakeMenu extends JFrame implements addMenuOpt{
 		JMenuItem MExit = new JMenuItem("EXIT");
 
 		MNew.addActionListener(new MenuToolAction());
+		MOpen.addActionListener(new MenuToolAction());
+		MExit.addActionListener(new MenuToolAction());
 		
 		Menu.add(MNew);
 		Menu.add(MOpen);

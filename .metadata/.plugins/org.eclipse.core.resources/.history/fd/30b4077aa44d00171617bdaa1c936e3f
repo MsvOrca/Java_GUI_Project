@@ -48,8 +48,6 @@ public class OpenDialog extends JDialog{
 	}
 	public void OpenPaint(Gson gson)
 	{
-		
-		ButtonPane.drawnVector.removeAllElements();
 
 		try{
 			EditorPane.DO.repaint();

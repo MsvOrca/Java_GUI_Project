@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
@@ -20,7 +21,7 @@ public class MakeTool extends JFrame implements AddToolOpt{
 	@Override
 	public void AddToolBar(JToolBar ToolBar) {
 		MenuToolAction MTAction = new MenuToolAction();
-		JButton TNew = new JButton("NEW");
+		JButton TNew = new JButton(new ImageIcon("../new.png"));
 		JButton TOpen = new JButton("OPEN");
 		JButton TSave = new JButton("SAVE");
 		JButton TSaveAs = new JButton("SAVE AS");
@@ -31,6 +32,7 @@ public class MakeTool extends JFrame implements AddToolOpt{
 		TOpen.addActionListener(MTAction);
 		TSave.addActionListener(new SaveButtonActionListener());
 		TSaveAs.addActionListener(new SaveAsButtonActionListener());
+		TJava.addActionListener(MTAction);
 		TExit.addActionListener(MTAction);
 		
 		ToolBar.add(TNew);

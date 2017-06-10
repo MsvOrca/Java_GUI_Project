@@ -38,7 +38,10 @@ public class SaveJavaFile {
 				+ "public void paintComponent(Graphics g) {"
 				+ "super.paintComponent(g);";
 		inp = inp.concat(Obj);
-		inp = inp.concat("}"
+		inp = inp.concat(
+				"g.setColor(Color.BLUE);"
+						+ "g.drawRect(10,10, 50, 50);"
+						+ "}"
 						+ "}"
 						+ "public static void main(String [] args) {"
 						+ "new "+ MainClass.frame.getTitle() +"();"
@@ -65,21 +68,13 @@ public class SaveJavaFile {
 				Entire = Entire.concat("g.fillRoundRect(");
 				break;
 			case "Circle" :
-				Entire = Entire.concat("g.fillOval(");
+				Entire = Entire.concat("g.fillCircle(");
 				break;
 			case "Rectangle" :
 				Entire = Entire.concat("g.fillRect(");
 				break;
 			}
-			Entire = tmp.concat(Entire +"" + DOP.x +"," + DOP.y +"," + DOP.width +"," +DOP.height);
-			
-			switch(DOP.type)
-			{
-			case "RoundRectangle" :
-				Entire = Entire.concat(", 30, 30");
-				break;
-			}
-			Entire = Entire.concat(");");
+			Entire = tmp.concat(Entire +"" + DOP.x +"," + DOP.y +"," + DOP.width +"," +DOP.height+");");
 		}
 
 		System.out.println(Entire);

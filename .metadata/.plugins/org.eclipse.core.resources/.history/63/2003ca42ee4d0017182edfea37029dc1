@@ -37,8 +37,11 @@ public class SaveJavaFile {
 				+ "class MyPanel extends JPanel {"
 				+ "public void paintComponent(Graphics g) {"
 				+ "super.paintComponent(g);";
-		inp = inp.concat(Obj);
-		inp = inp.concat("}"
+		inp.concat(Obj);
+		inp.concat(
+				"g.setColor(Color.BLUE);"
+						+ "g.drawRect(10,10, 50, 50);"
+						+ "}"
 						+ "}"
 						+ "public static void main(String [] args) {"
 						+ "new "+ MainClass.frame.getTitle() +"();"
@@ -52,38 +55,25 @@ public class SaveJavaFile {
 		DrawnObject DOP = new DrawnObject();
 		String tmp = new String();
 		String Entire = new String("g.setColor(Color.BLUE);");
-		System.out.println(ButtonPane.drawnVector.size());
 		for(int a = 0; a < ButtonPane.drawnVector.size(); a++)
 		{
 			DOP = ButtonPane.drawnVector.get(a);
-			
-			System.out.println("TYPE" + DOP.type);
 
 			switch(DOP.type)
 			{
-			case "RoundRectangle" :
-				Entire = Entire.concat("g.fillRoundRect(");
+			case "roundrectangle" :
+				tmp = "g.fillRoundRect(";
 				break;
-			case "Circle" :
-				Entire = Entire.concat("g.fillOval(");
+			case "circle" :
+				tmp = "g.fillCircle(";
 				break;
-			case "Rectangle" :
-				Entire = Entire.concat("g.fillRect(");
-				break;
-			}
-			Entire = tmp.concat(Entire +"" + DOP.x +"," + DOP.y +"," + DOP.width +"," +DOP.height);
-			
-			switch(DOP.type)
-			{
-			case "RoundRectangle" :
-				Entire = Entire.concat(", 30, 30");
+			case "rectangle" :
+				tmp = "g.fillRect(";
 				break;
 			}
-			Entire = Entire.concat(");");
+			Entire.concat(tmp + "" + DOP.x +"," + DOP.y +"," + DOP.width +"," +DOP.height+");");
 		}
 
-		System.out.println(Entire);
-		
 		return Entire;
 	}
 }

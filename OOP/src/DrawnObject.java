@@ -1,7 +1,6 @@
 
 public class DrawnObject 
 {
-	int num;
 	String type;
 	String variable;
 	int x;

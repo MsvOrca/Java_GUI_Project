@@ -38,7 +38,10 @@ public class SaveJavaFile {
 				+ "public void paintComponent(Graphics g) {"
 				+ "super.paintComponent(g);";
 		inp = inp.concat(Obj);
-		inp = inp.concat("}"
+		inp = inp.concat(
+				"g.setColor(Color.BLUE);"
+						+ "g.drawRect(10,10, 50, 50);"
+						+ "}"
 						+ "}"
 						+ "public static void main(String [] args) {"
 						+ "new "+ MainClass.frame.getTitle() +"();"

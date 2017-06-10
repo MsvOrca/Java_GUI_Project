@@ -1,0 +1,64 @@
+import java.awt.*;
+import javax.swing.*;
+
+import com.google.gson.Gson;
+
+import java.awt.event.*;
+import java.io.*;
+
+
+public class SaveDialog extends JDialog
+{
+	JLabel label = new JLabel("File Name");
+	JTextField text = new JTextField(10);
+	JButton button = new JButton("OK");
+
+	SaveDialog(JFrame frame, String title)
+	{
+		super(frame,title);
+		setLayout(new GridLayout(2,1));
+		setSize(200,150);
+
+		add(label);
+		add(text);
+		add(button);
+
+
+		button.addActionListener(new ButtonActionListener());
+	}
+
+
+	private class ButtonActionListener implements ActionListener
+	{
+
+		public void actionPerformed(ActionEvent action) 
+		{	
+			try
+			{
+				FileWriter writer = new FileWriter("C:\\JavaFileIoEx\\"+text.getText()+".json");
+				DrawnObject traversal;
+				Gson gson = new Gson();
+				
+				for(int i=0;i<ButtonPane.drawnVector.size();i++)
+				{
+					traversal = ButtonPane.drawnVector.elementAt(i);
+					String inp = gson.toJson(traversal);
+					String space = gson.toJson("\n");
+					writer.write(inp);
+					writer.write(space);
+					writer.flush();
+				}
+				writer.close();
+			}
+			catch(IOException io)
+			{
+				System.out.println("Tool.SaveButton.ActionListener.Exception Happened!!");
+			}
+			
+			dispose();
+
+		}
+	}
+
+}
+

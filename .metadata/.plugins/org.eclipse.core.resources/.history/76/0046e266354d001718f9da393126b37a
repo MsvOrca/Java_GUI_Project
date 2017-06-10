@@ -1,0 +1,53 @@
+import java.awt.*;
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import com.google.gson.Gson;
+
+import java.awt.event.*;
+import java.io.*;
+
+public class OpenDialog extends JDialog{
+	JLabel label = new JLabel("File Name");
+	JTextField text = new JTextField(50);
+
+	JButton btn = new JButton("OK");
+
+	OpenDialog(JFrame frame, String title)
+	{
+		super(frame, title);
+		setLayout(new GridLayout(2,1));
+		setSize(500,150);
+		add(label);
+		add(text);
+		add(btn);
+		
+		btn.addActionListener(new ButtonActionListener());
+	}
+	
+	private class ButtonActionListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			try
+			{
+				BufferedReader br = new BufferedReader(new FileReader("C:\\JavaFileIoEx\\"+text.getText()+".json"));
+				
+				while(true){
+					String line = br.readLine();
+					if(line == null)
+						break;
+					System.out.println(line + "      ");
+				}
+			}
+			catch(IOException io)
+			{
+				System.out.println("Tool.OpenButton.ActionListener.Exception Happened!!");
+			}
+		}
+		
+	}
+}

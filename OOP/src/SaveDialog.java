@@ -12,25 +12,25 @@ public class SaveDialog extends JDialog
 	JLabel label = new JLabel("File Name");
 	JTextField text = new JTextField(10);
 	JButton button = new JButton("OK");
-	
+
 	SaveDialog(JFrame frame, String title)
 	{
 		super(frame,title);
 		setLayout(new GridLayout(2,1));
 		setSize(200,150);
-		
+
 		add(label);
 		add(text);
 		add(button);
-	
-		
+
+
 		button.addActionListener(new ButtonActionListener());
 	}
-	
-	
+
+
 	private class ButtonActionListener implements ActionListener
 	{
-		
+
 		public void actionPerformed(ActionEvent action) 
 		{	
 			try
@@ -44,6 +44,7 @@ public class SaveDialog extends JDialog
 					traversal = ButtonPane.drawnVector.elementAt(i);
 					String inp = gson.toJson(traversal);
 					writer.write(inp);
+					writer.write("\n");
 					writer.flush();
 				}
 				writer.close();

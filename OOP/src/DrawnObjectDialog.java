@@ -7,7 +7,7 @@ import java.io.*;
 public class DrawnObjectDialog extends JDialog
 {
 	//DialogInputElement element = new DialogInputElement("Input X Value");
-	 String[] str = {"Text","Variable"};
+	String[] str = {"Text","Variable"};
 	DialogInputElement[] elements = new DialogInputElement[2];
 	JButton button = new JButton("OK");
 	DrawnObject drawn;

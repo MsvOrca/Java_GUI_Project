@@ -14,15 +14,14 @@ public class MenuToolAction implements ActionListener{
 			{
 			case "NEW" :
 				ButtonPane.drawnVector.removeAllElements();
+				//DrawingObject.needPaint = true;
+				System.out.println("NEW");
 				EditorPane.DO.repaint();
 				break;
 			case "EXIT" :
 				System.exit(0);
 				break;
-			case "OPEN" :
-				MakeTool.openDialog.setVisible(true);
-				break;
-				}
+			}
 		}
 		else if(e.getSource() instanceof JMenuItem)
 		{
@@ -31,8 +30,8 @@ public class MenuToolAction implements ActionListener{
 			switch(Tmp.getText())
 			{
 			case "NEW" :
-				ButtonPane.drawnVector.removeAllElements();	
-				EditorPane.DO.repaint();
+				ButtonPane.drawnVector.removeAllElements();			
+				//DrawingObject.needPaint = true;
 				break;
 			case "EXIT" :
 				System.exit(0);

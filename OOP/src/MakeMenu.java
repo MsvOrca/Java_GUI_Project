@@ -22,6 +22,8 @@ public class MakeMenu extends JFrame implements addMenuOpt{
 		JMenuItem MJava = new JMenuItem("NEW JAVA");
 		JMenuItem MExit = new JMenuItem("EXIT");
 
+		MNew.addActionListener(new MenuToolAction());
+		
 		Menu.add(MNew);
 		Menu.add(MOpen);
 		Menu.add(MSave);

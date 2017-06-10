@@ -16,7 +16,7 @@ interface AddToolOpt{
 public class MakeTool extends JFrame implements AddToolOpt{
 
 	static SaveDialog saveDialog = new SaveDialog(MainClass.frame,"Save File");
-	
+	static OpenDialog openDialog = new OpenDialog(MainClass.frame,"Open File");
 	@Override
 	public void AddToolBar(JToolBar ToolBar) {
 		MenuToolAction MTAction = new MenuToolAction();
@@ -27,8 +27,11 @@ public class MakeTool extends JFrame implements AddToolOpt{
 		JButton TJava = new JButton("NEW JAVA");
 		JButton TExit = new JButton("EXIT");
 		
+		TNew.addActionListener(MTAction);
+		TOpen.addActionListener(MTAction);
 		TSave.addActionListener(new SaveButtonActionListener());
 		TSaveAs.addActionListener(new SaveAsButtonActionListener());
+		TExit.addActionListener(MTAction);
 		
 		ToolBar.add(TNew);
 		ToolBar.add(TOpen);

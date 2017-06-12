@@ -48,13 +48,6 @@ public class MenuToolAction implements ActionListener{
 			case "OPEN" :
 				MakeTool.openDialog.setVisible(true);
 				break;
-			case "NEW JAVA" :
-				try {
-					new SaveJavaFile();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				break;
 			}
 		}
 	}

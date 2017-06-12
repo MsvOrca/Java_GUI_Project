@@ -54,10 +54,7 @@ public class AttributePane extends JSplitPane
 		public void valueChanged(ListSelectionEvent event) {
 			// TODO Auto-generated method stub
 			//DefaultListSelectionModel model = (DefaultListSelectionModel)event.getSource();
-			
-			
-			int selectedRow = table.getSelectedRow();
-			
+			int selectedRow = table.getSelectedRow();		
 			}
 		
 	}

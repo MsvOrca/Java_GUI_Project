@@ -21,7 +21,7 @@ public class MakeTool extends JFrame implements AddToolOpt{
 	@Override
 	public void AddToolBar(JToolBar ToolBar) {
 		MenuToolAction MTAction = new MenuToolAction();
-		JButton TNew = new JButton(new ImageIcon("../new.png"));
+		JButton TNew = new JButton("NEW");
 		JButton TOpen = new JButton("OPEN");
 		JButton TSave = new JButton("SAVE");
 		JButton TSaveAs = new JButton("SAVE AS");
@@ -48,7 +48,6 @@ public class MakeTool extends JFrame implements AddToolOpt{
 
 	@Override
 	public void CreateTool(JToolBar ToolBar, JFrame Frame) {
-		// TODO Auto-generated method stub
 		AddToolBar(ToolBar);
 		ToolBar.setFloatable(false);
 		Frame.add(ToolBar, BorderLayout.NORTH);
@@ -59,7 +58,6 @@ public class MakeTool extends JFrame implements AddToolOpt{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			saveDialog.setVisible(true);
 		}
 		
@@ -69,9 +67,7 @@ public class MakeTool extends JFrame implements AddToolOpt{
 	{
 
 		@Override
-		public void actionPerformed(ActionEvent event) {
-			// TODO Auto-generated method stub
-			
+		public void actionPerformed(ActionEvent event) {			
 			try
 			{
 				FileWriter writer = new FileWriter("C:\\JavaFileIoEx\\abc.json");

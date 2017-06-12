@@ -4,7 +4,6 @@ import java.util.*;
 
 public class ContentPane extends JSplitPane 
 {
-
 	ContentPane(JFrame frame, JToolBar tb, MakeTool MT)
 	{
 		super(JSplitPane.HORIZONTAL_SPLIT);

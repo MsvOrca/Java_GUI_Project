@@ -40,9 +40,8 @@ public class DrawingObject extends JPanel{
             case "RoundRectangle" :
                 g.fillRoundRect(DOP.x, DOP.y, DOP.width, DOP.height, 30, 30);
                 break;
-
             }
-
+            	
 		}
 	}
 }

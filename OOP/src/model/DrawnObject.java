@@ -1,6 +1,8 @@
 package model;
 
-public class DrawnObject 
+import javax.swing.JLabel;
+
+public class DrawnObject extends JLabel 
 {
 	public String type;
 	public String variable;
@@ -25,6 +27,7 @@ public class DrawnObject
 	
 	public DrawnObject(String type, String variable, int x, int y, int width, int height, String text)
 	{
+		this.getText();
 		setType(type);
 		setVariableName(variable);
 		setPos(x,y);

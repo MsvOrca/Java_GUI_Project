@@ -56,10 +56,12 @@ public class SaveJavaFile {
 		DrawnObject DOP = new DrawnObject();
 		String tmp = new String();
 		String Entire = new String("g.setColor(Color.BLUE);");
+		System.out.println(ButtonPane.drawnVector.size());
 		for(int a = 0; a < ButtonPane.drawnVector.size(); a++)
 		{
 			DOP = ButtonPane.drawnVector.get(a);
 			
+			System.out.println("TYPE" + DOP.type);
 
 			switch(DOP.type)
 			{
@@ -84,6 +86,7 @@ public class SaveJavaFile {
 			Entire = Entire.concat(");");
 		}
 
+		System.out.println(Entire);
 		
 		return Entire;
 	}

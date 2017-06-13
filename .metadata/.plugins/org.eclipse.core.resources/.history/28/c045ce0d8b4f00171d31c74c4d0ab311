@@ -1,0 +1,76 @@
+import java.awt.*;
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import DrawnObject;
+import view.EditorPane;
+
+import java.awt.event.*;
+import java.io.*;
+
+public class OpenDialog extends JDialog{
+	JLabel label = new JLabel("File Name");
+	JTextField text = new JTextField(50);
+
+	JButton btn = new JButton("OK");
+	JsonParser parser = new JsonParser();
+
+
+	OpenDialog(JFrame frame, String title)
+	{
+		super(frame, title);
+		setLayout(new GridLayout(2,1));
+		setSize(500,150);
+		add(label);
+		add(text);
+		add(btn);
+
+		btn.addActionListener(new ButtonActionListener());
+	}
+
+	private class ButtonActionListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			Gson gson = new Gson();
+
+			OpenPaint(gson);
+
+			dispose();
+		}
+	}
+	public void OpenPaint(Gson gson)
+	{
+		
+		ButtonPane.drawnVector.removeAllElements();
+
+		try{
+			EditorPane.DO.repaint();
+			BufferedReader br = new BufferedReader(new FileReader("C:\\JavaFileIoEx\\"+text.getText()+".json"));
+
+			String line;
+
+			while((line = br.readLine()) != null)
+			{
+				DrawnObject DOP = gson.fromJson(line, DrawnObject.class);
+				ButtonPane.drawnVector.addElement(DOP);
+				System.out.println(line);
+			}
+			br.close();
+		}
+		catch(IOException io)
+		{
+			System.out.println("NO FILE");
+		}
+	}
+}

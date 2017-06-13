@@ -1,4 +1,9 @@
 import javax.swing.*;
+
+import Controller.SaveJavaFile;
+import model.MakeTool;
+import view.EditorPane;
+
 import java.awt.event.*;
 import java.io.IOException;
 

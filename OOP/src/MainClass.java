@@ -1,6 +1,8 @@
 import java.awt.*;
 import javax.swing.*;
 
+import view.CreateFrame;
+
 public class MainClass {
 	
 	static public CreateFrame frame;

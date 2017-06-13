@@ -1,6 +1,13 @@
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.swing.*;
+
+import com.google.gson.Gson;
 
 interface addMenuOpt{//Interface forms entire menu
 	void addMenuBar(JMenu Menu, JMenuBar MenuBar);
@@ -8,6 +15,8 @@ interface addMenuOpt{//Interface forms entire menu
 	void CreateMenu(JMenu Menu, JMenuBar MenuBar);
 }
 public class MakeMenu extends JFrame implements addMenuOpt{
+
+	static SaveDialog save = new SaveDialog(MainClass.frame,"Save File");
 	
 	@Override
 	public void addMenuBar(JMenu Menu, JMenuBar MenuBar) {//function inserting menu in menubar
@@ -22,9 +31,11 @@ public class MakeMenu extends JFrame implements addMenuOpt{
 		JMenuItem MSaveAs = new JMenuItem("SAVE AS");
 		JMenuItem MJava = new JMenuItem("NEW JAVA");
 		JMenuItem MExit = new JMenuItem("EXIT");
-
+		
 		MNew.addActionListener(new MenuToolAction());
 		MOpen.addActionListener(new MenuToolAction());
+		MSave.addActionListener(new SaveButtonActionListener());
+		MSaveAs.addActionListener(new SaveAsButtonActionListener());
 		MJava.addActionListener(new MenuToolAction());
 		MExit.addActionListener(new MenuToolAction());
 		
@@ -41,4 +52,43 @@ public class MakeMenu extends JFrame implements addMenuOpt{
 		addMenu(Menu);
 		addMenuBar(Menu, MenuBar);
 	}
+	
+	class SaveAsButtonActionListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			save.setVisible(true);
+		}
+		
+	}
+	
+	class SaveButtonActionListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent event) {			
+			try
+			{
+				FileWriter writer = new FileWriter("C:\\JavaFileIoEx\\abc.json");
+				DrawnObject traversal;
+				Gson gson = new Gson();
+				
+				for(int i=0;i<ButtonPane.drawnVector.size();i++)
+				{
+					traversal = ButtonPane.drawnVector.elementAt(i);
+					String inp = gson.toJson(traversal);
+					writer.write(inp);
+					writer.flush();
+				}
+				writer.close();
+			}
+			catch(IOException io)
+			{
+				System.out.println("Tool.SaveButton.ActionListener.Exception Happened!!");
+			}
+		}
+		
+	}
+
 }

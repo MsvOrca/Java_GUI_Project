@@ -1,12 +1,9 @@
 import java.awt.Component;
 import java.awt.GridLayout;
-import java.awt.TextField;
-import java.awt.event.*;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
-import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -59,6 +56,7 @@ public class AttributePane extends JSplitPane
 		public void valueChanged(ListSelectionEvent event) {	
 			int selectedRow = table.getSelectedRow();		
 			}
+
 		
 	}
 	
@@ -70,10 +68,12 @@ class TablePane extends JTable
 	static final String[] columnData = {"Attribute","Value"};
 	static DrawnObject selectedObject;
 	static DefaultTableModel model = new DefaultTableModel(rowData,columnData);
+	static int selectedRow;
 	
 	TablePane()
 	{
 		this.setModel(model);
+		model.addTableModelListener(new TablePaneModelListener());
 	}
 	
 	static public void setTablePane()
@@ -86,8 +86,47 @@ class TablePane extends JTable
 		model.setValueAt(selectedObject.text,6,1);
 		model.setValueAt(selectedObject.variable,7,1);
 	}
-	
-	
+
+	class TablePaneModelListener implements TableModelListener
+	{
+
+		@Override
+		public void tableChanged(TableModelEvent event) {
+		
+			
+			if(selectedRow!=0)
+			{
+				switch(selectedRow)
+				{
+				case 1:
+					selectedObject.text = (String)model.getValueAt(selectedRow, 1);
+					break;
+				case 2:
+					selectedObject.height = Integer.parseInt(""+model.getValueAt(selectedRow, 1));
+					break;
+				case 3:
+					selectedObject.width = Integer.parseInt(""+model.getValueAt(selectedRow, 1));
+				break;
+			case 4:
+				selectedObject.x = Integer.parseInt(""+model.getValueAt(selectedRow, 1));
+				break;
+			case 5:
+				selectedObject.y = Integer.parseInt(""+model.getValueAt(selectedRow, 1));
+				break;
+			case 6:
+				selectedObject.text = (String)(model.getValueAt(selectedRow, 1));
+				break;
+			case 7:
+				selectedObject.variable = (String)(model.getValueAt(selectedRow, 1));
+				break;
+			}
+				selectedRow = 0;
+				setTablePane();
+				EditorPane.DO.repaint();
+			}
+		}
+		
+	}
 	
 	
 }

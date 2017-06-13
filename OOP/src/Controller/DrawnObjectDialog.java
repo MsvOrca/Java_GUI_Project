@@ -55,7 +55,7 @@ public class DrawnObjectDialog extends JDialog
 			drawn = ButtonPane.drawnVector.lastElement();
 			drawn.text = elements[0].textField.getText();
 			drawn.variable = elements[1].textField.getText();
-						for(int i=0;i<elements.length;i++)
+			for(int i=0;i<elements.length;i++)
 			{
 				elements[i].textField.setText("");
 			}

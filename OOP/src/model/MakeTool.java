@@ -28,12 +28,12 @@ public class MakeTool extends JFrame implements AddToolOpt{
 	@Override
 	public void AddToolBar(JToolBar ToolBar) {
 		MenuToolAction MTAction = new MenuToolAction();
-		JButton TNew = new JButton("NEW");
-		JButton TOpen = new JButton("OPEN");
-		JButton TSave = new JButton("SAVE");
-		JButton TSaveAs = new JButton("SAVE AS");
-		JButton TJava = new JButton("NEW JAVA");
-		JButton TExit = new JButton("EXIT");
+		JButton TNew = new JButton(new ImageIcon("img/new.png"));
+		JButton TOpen = new JButton(new ImageIcon("img/open.png"));
+		JButton TSave = new JButton(new ImageIcon("img/save.png"));
+		JButton TSaveAs = new JButton(new ImageIcon("img/saveas.png"));
+		JButton TJava = new JButton(new ImageIcon("img/java.png"));
+		JButton TExit = new JButton(new ImageIcon("img/exit.png"));
 		
 		TNew.addActionListener(MTAction);
 		TOpen.addActionListener(MTAction);

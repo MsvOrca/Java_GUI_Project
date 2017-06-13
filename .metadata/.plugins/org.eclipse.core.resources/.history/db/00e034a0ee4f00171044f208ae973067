@@ -35,6 +35,8 @@ public class MenuToolAction implements ActionListener{
 					e1.printStackTrace();
 				}
 				break;
+				default :
+					System.out.println(Tmp.getIcon().toString());
 			}
 		}
 		else if(e.getSource() instanceof JMenuItem)

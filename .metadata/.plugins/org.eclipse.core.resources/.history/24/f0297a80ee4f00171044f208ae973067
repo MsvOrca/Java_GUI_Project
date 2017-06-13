@@ -16,19 +16,19 @@ public class MenuToolAction implements ActionListener{
 		{
 			JButton Tmp = (JButton)e.getSource();
 
-			switch(Tmp.getIcon().toString())
+			switch(Tmp.getText())
 			{
-			case "img/new.png" :
+			case "NEW" :
 				ButtonPane.drawnVector.removeAllElements();
 				EditorPane.DO.repaint();
 				break;
-			case "img/exit.png" :
+			case "EXIT" :
 				System.exit(0);
 				break;
-			case "img/open.png" :
+			case "OPEN" :
 				MakeTool.openDialog.setVisible(true);
 				break;
-			case "img/java.png" :
+			case "NEW JAVA" :
 				try {
 					new SaveJavaFile();
 				} catch (IOException e1) {

@@ -2,8 +2,8 @@ package Controller;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import DrawnObject;
-import MainClass;
+import model.DrawnObject;
+import view.MainClass;
 
 public class SaveJavaFile {
 	public SaveJavaFile() throws IOException

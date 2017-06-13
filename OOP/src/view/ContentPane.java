@@ -1,7 +1,6 @@
 package view;
 import javax.swing.*;
 
-import AttributePane;
 import model.MakeTool;
 
 import java.util.*;

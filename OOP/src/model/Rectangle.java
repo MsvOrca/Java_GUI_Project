@@ -1,5 +1,4 @@
 package model;
-import DrawnObject;
 
 public class Rectangle extends DrawnObject
 {

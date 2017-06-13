@@ -12,7 +12,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import DrawnObject;
+import model.DrawnObject;
 import view.EditorPane;
 
 import java.awt.event.*;
@@ -26,7 +26,7 @@ public class OpenDialog extends JDialog{
 	JsonParser parser = new JsonParser();
 
 
-	OpenDialog(JFrame frame, String title)
+	public OpenDialog(JFrame frame, String title)
 	{
 		super(frame, title);
 		setLayout(new GridLayout(2,1));

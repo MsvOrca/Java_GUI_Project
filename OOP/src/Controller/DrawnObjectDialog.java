@@ -1,13 +1,17 @@
 package Controller;
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import ButtonPane;
-import DrawnObject;
-import TablePane;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
-import java.awt.event.*;
-import java.io.*;
+import model.DrawnObject;
+import view.TablePane;
 
 
 public class DrawnObjectDialog extends JDialog
@@ -19,7 +23,7 @@ public class DrawnObjectDialog extends JDialog
 	DrawnObject drawn;
 	boolean visible = true;
 	
-	DrawnObjectDialog(JFrame frame, String title)
+	public DrawnObjectDialog(JFrame frame, String title)
 	{
 		super(frame,title);
 		setLayout(new GridLayout(3,1));

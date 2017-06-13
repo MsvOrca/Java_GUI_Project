@@ -4,10 +4,11 @@ import javax.swing.*;
 
 import com.google.gson.Gson;
 
-import DrawnObject;
+import model.DrawnObject;
 
 import java.awt.event.*;
 import java.io.*;
+import view.MainClass;
 
 
 public class SaveDialog extends JDialog
@@ -16,7 +17,7 @@ public class SaveDialog extends JDialog
 	JTextField text = new JTextField(10);
 	JButton button = new JButton("OK");
 
-	SaveDialog(JFrame frame, String title)
+	public SaveDialog(JFrame frame, String title)
 	{
 		super(frame,title);
 		setLayout(new GridLayout(2,1));
@@ -26,8 +27,9 @@ public class SaveDialog extends JDialog
 		add(text);
 		add(button);
 
-
 		button.addActionListener(new ButtonActionListener());
+		
+		
 	}
 
 

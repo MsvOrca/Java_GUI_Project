@@ -12,11 +12,10 @@ import javax.swing.JToolBar;
 import com.google.gson.*;
 
 import Controller.ButtonPane;
-import DrawnObject;
-import MainClass;
-import MenuToolAction;
+import Controller.MenuToolAction;
 import Controller.OpenDialog;
 import Controller.SaveDialog;
+import view.MainClass;
 
 interface AddToolOpt{
 	void AddToolBar(JToolBar ToolBar);
@@ -25,7 +24,7 @@ interface AddToolOpt{
 public class MakeTool extends JFrame implements AddToolOpt{
 
 	static SaveDialog saveDialog = new SaveDialog(MainClass.frame,"Save File");
-	static OpenDialog openDialog = new OpenDialog(MainClass.frame,"Open File");
+	public static OpenDialog openDialog = new OpenDialog(MainClass.frame,"Open File");
 	@Override
 	public void AddToolBar(JToolBar ToolBar) {
 		MenuToolAction MTAction = new MenuToolAction();
@@ -63,12 +62,10 @@ public class MakeTool extends JFrame implements AddToolOpt{
 	
 	class SaveAsButtonActionListener implements ActionListener
 	{
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			saveDialog.setVisible(true);
-		}
-		
+		}	
 	}
 	
 	class SaveButtonActionListener implements ActionListener

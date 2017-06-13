@@ -7,7 +7,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
-import MakeMenu;
+import model.MakeMenu;
 import model.MakeTool;
 
 public class CreateFrame extends JFrame{

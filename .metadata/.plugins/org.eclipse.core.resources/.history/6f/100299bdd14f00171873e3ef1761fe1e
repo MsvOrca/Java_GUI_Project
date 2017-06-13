@@ -1,0 +1,67 @@
+import javax.swing.*;
+
+import model.MakeTool;
+import view.EditorPane;
+
+import java.awt.event.*;
+import java.io.IOException;
+
+
+public class MenuToolAction implements ActionListener{
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource() instanceof JButton)
+		{
+			JButton Tmp = (JButton)e.getSource();
+
+			switch(Tmp.getText())
+			{
+			case "NEW" :
+				ButtonPane.drawnVector.removeAllElements();
+				EditorPane.DO.repaint();
+				break;
+			case "EXIT" :
+				System.exit(0);
+				break;
+			case "OPEN" :
+				MakeTool.openDialog.setVisible(true);
+				break;
+			case "NEW JAVA" :
+				try {
+					new SaveJavaFile();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			}
+		}
+		else if(e.getSource() instanceof JMenuItem)
+		{
+			JMenuItem Tmp = (JMenuItem)e.getSource();
+
+			switch(Tmp.getText())
+			{
+			case "NEW" :
+				ButtonPane.drawnVector.removeAllElements();	
+				EditorPane.DO.repaint();
+				break;
+			case "EXIT" :
+				System.exit(0);
+				break;
+			case "OPEN" :
+				MakeTool.openDialog.setVisible(true);
+				break;
+			case "NEW JAVA" :
+				try {
+					new SaveJavaFile();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			}
+		}
+	}
+
+}
+

@@ -10,8 +10,11 @@ import javax.swing.JPanel;
 
 import model.Button;
 import model.Circle;
+import model.DrawnObject;
 import model.Rectangle;
 import model.RoundRectangle;
+import view.EditorPane;
+import view.TablePane;
 
 public class ButtonPane extends JPanel 
 {
@@ -19,7 +22,7 @@ public class ButtonPane extends JPanel
 	public static Vector<DrawnObject> drawnVector = new Vector<DrawnObject>();
 	JButton[] buttons = new JButton[4];
 	
-	ButtonPane()
+	public ButtonPane()
 	{
 		this.setLayout(new GridLayout(2,2));
 		setButtons();
@@ -44,7 +47,7 @@ public class ButtonPane extends JPanel
 			
 			if(strb[0].equals(text))
 			{
-				drawnVector.addElement(new Button());//益掘益軍しけしいしけ
+				drawnVector.addElement(new Button());
 				EditorPane.Made = true;
 				TablePane.selectedObject = drawnVector.lastElement();
 				TablePane.setTablePane();

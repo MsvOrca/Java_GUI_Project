@@ -9,4 +9,8 @@
 <fullyQualifiedTypeName name="java.net.URL"/>
 <fullyQualifiedTypeName name="com.google.gson.JsonIOException"/>
 <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+<fullyQualifiedTypeName name="model.DrawnObject"/>
+<fullyQualifiedTypeName name="view.TablePane"/>
+<fullyQualifiedTypeName name="Controller.ButtonPane"/>
+<fullyQualifiedTypeName name="view.MainClass"/>
 </qualifiedTypeNameHistroy>

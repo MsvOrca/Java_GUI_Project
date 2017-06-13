@@ -5,14 +5,12 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JScrollPane;
 
-import DrawingObject;
-import DrawnObject;
-import MainClass;
-import TablePane;
 import Controller.ButtonPane;
+import Controller.DrawingObject;
 import Controller.DrawnObjectDialog;
+import model.DrawnObject;
 
-class EditorPane extends JScrollPane
+public class EditorPane extends JScrollPane
 {
 	static public DrawingObject DO = new DrawingObject();
 	static public Boolean Made = false;
